@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables (Protect secrets & API keys)
+.env
+
+# Database file (Fresh DB will auto-generate on server startup)
+*.db
+*.sqlite3
+
+# Uploaded PDF resumes & reports cache
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# Operating system / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
