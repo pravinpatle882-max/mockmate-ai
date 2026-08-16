@@ -3,17 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MockMate AI - Intelligent Interview Preparation & Performance Evaluation</title>
+  <title>MockMate Grand Hotel - Vintage Candidate Evaluation & Concierge</title>
   
   <!-- Website Favicon Logo -->
   <link rel="icon" type="image/png" href="/src/assets/logo.png">
   
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Custom Mobile & Desktop Responsive Design System CSS -->
+  <!-- Custom Vintage Grand Hotel CSS -->
   <link rel="stylesheet" href="/src/css/style.css">
   
   <!-- Chart.js for analytics graphs -->
@@ -37,24 +32,21 @@
   <script type="text/babel">
     const { useState, useEffect, useRef } = React;
 
-    // --- SVG ICONS ---
-    const IconCode = () => (
-      <svg className="svg-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+    // --- VINTAGE SVG ICONS ---
+    const IconKey = () => (
+      <svg className="svg-icon key-swing" viewBox="0 0 24 24"><path d="M21 2l-2 2m-2-2l2 2m2 2l-6 6m0 0a5 5 0 1 1-7-7 5 5 0 0 1 7 7z"></path></svg>
     );
-    const IconMic = () => (
-      <svg className="svg-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+    const IconBell = () => (
+      <svg className="svg-icon bell-ring" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
     );
-    const IconChart = () => (
-      <svg className="svg-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+    const IconFeather = () => (
+      <svg className="svg-icon" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L3 13v5h5l9.24-9.24z"></path><line x1="16" y1="8" x2="2" y2="22"></line></svg>
     );
-    const IconFile = () => (
-      <svg className="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+    const IconGramophone = () => (
+      <svg className="svg-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
     );
-    const IconCheck = () => (
-      <svg className="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-    );
-    const IconUser = () => (
-      <svg className="svg-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    const IconLedger = () => (
+      <svg className="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
     );
     const IconDownload = () => (
       <svg className="svg-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -62,8 +54,8 @@
     const IconClock = () => (
       <svg className="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
     );
-    const IconHelp = () => (
-      <svg className="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    const IconUser = () => (
+      <svg className="svg-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
     );
     const IconMenu = () => (
       <svg className="svg-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -81,8 +73,8 @@
       return (
         <nav className="navbar">
           <div className="brand" onClick={() => handleNavClick('home')} style={{cursor: 'pointer'}}>
-            <img src="/src/assets/logo.png" alt="MockMate AI Logo" className="brand-logo-img" />
-            <span>MockMate AI</span>
+            <img src="/src/assets/logo.png" alt="MockMate Grand Hotel Logo" className="brand-logo-img" />
+            <span>MockMate Grand Hotel</span>
           </div>
 
           <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
@@ -91,25 +83,25 @@
 
           <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <span className={`nav-item ${currentPage === 'home' ? 'active' : ''}`} onClick={() => handleNavClick('home')}>
-              Home
+              Grand Lobby
             </span>
 
             {user ? (
               <>
                 <span className={`nav-item ${currentPage === 'dashboard' ? 'active' : ''}`} onClick={() => handleNavClick('dashboard')}>
-                  Dashboard
+                  Guest Ledger
                 </span>
                 <span className={`nav-item ${currentPage === 'setup' ? 'active' : ''}`} onClick={() => handleNavClick('setup')}>
-                  Start Assessment
+                  Assessment Suite
                 </span>
                 <span className={`nav-item ${currentPage === 'history' ? 'active' : ''}`} onClick={() => handleNavClick('history')}>
-                  History
+                  Archives
                 </span>
                 <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginLeft: '8px', flexWrap: 'wrap'}}>
-                  <span className="badge badge-indigo">
+                  <span className="badge badge-gold">
                     <IconUser /> {user.name}
                   </span>
-                  <button className="btn btn-secondary btn-sm" onClick={onLogout}>Logout</button>
+                  <button className="btn btn-secondary btn-sm" onClick={onLogout}>Check Out</button>
                 </div>
               </>
             ) : (
@@ -118,7 +110,7 @@
                   Sign In
                 </span>
                 <button className="btn btn-primary btn-sm" onClick={() => handleNavClick('register')}>
-                  Register
+                  Register Guest
                 </button>
               </>
             )}
@@ -134,103 +126,106 @@
           {/* Main Hero Header */}
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '28px', alignItems: 'center', padding: '16px 0 28px'}}>
             <div>
-              <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px'}}>
-                <img src="/src/assets/logo.png" alt="MockMate AI Logo" style={{width: '28px', height: '28px', borderRadius: '6px'}} />
-                <span className="badge badge-indigo">
-                  MockMate AI Assessment Platform
+              <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px'}}>
+                <span className="wax-seal" style={{width: '36px', height: '36px', fontSize: '0.75rem'}}>EST 1926</span>
+                <span className="badge badge-gold">
+                  <IconKey /> Grand Assessment Concierge
                 </span>
               </div>
-              <h1 style={{fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', letterSpacing: '-0.5px', marginBottom: '14px', color: 'var(--text-main)'}}>
-                Master Technical Interviews with MockMate AI
+
+              <h1 style={{fontSize: '2.5rem', fontWeight: '800', fontFamily: 'var(--font-serif)', lineHeight: '1.2', marginBottom: '16px', color: 'var(--text-light)'}}>
+                Welcome to the MockMate Grand Hotel
               </h1>
-              <p style={{fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: '1.6'}}>
-                Practice domain-tailored technical assessments across Software Engineering, Data Science, AI, and System Design. Receive multi-factor evaluation scores, semantic feedback, and downloadable PDF performance certificates.
+
+              <p style={{fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: '1.7', fontFamily: 'var(--font-serif)'}}>
+                Step into our prestigious vintage assessment suite. Practice domain-tailored technical evaluations across Software Architecture, AI Systems, Data Engineering, and Technical Management with real-time AI evaluation and official parchment report certificates.
               </p>
-              <div className="btn-stack-mobile" style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
-                <button className="btn btn-primary" style={{padding: '12px 24px'}} onClick={() => navigate(user ? 'setup' : 'login')}>
-                  Start Practice Assessment
+
+              <div className="btn-stack-mobile" style={{display: 'flex', gap: '12px', flexWrap: 'wrap'}}>
+                <button className="btn btn-primary" style={{padding: '12px 26px'}} onClick={() => navigate(user ? 'setup' : 'login')}>
+                  <IconBell /> Enter Assessment Suite
                 </button>
-                <button className="btn btn-secondary" style={{padding: '12px 24px'}} onClick={() => navigate(user ? 'dashboard' : 'register')}>
-                  View Performance Dashboard
+                <button className="btn btn-secondary" style={{padding: '12px 26px'}} onClick={() => navigate(user ? 'dashboard' : 'register')}>
+                  <IconLedger /> View Guest Ledger
                 </button>
               </div>
             </div>
 
-            {/* Generated Topic Illustration */}
+            {/* Generated Vintage Hotel Illustration */}
             <div>
-              <img src="/src/assets/hero.jpg" alt="MockMate AI Interviewer" className="img-card" style={{maxHeight: '280px'}} />
+              <img src="/src/assets/hero.jpg" alt="MockMate Grand Hotel Lobby" className="img-card" style={{maxHeight: '300px'}} />
             </div>
           </div>
 
           {/* System Overview Grid */}
-          <div style={{marginTop: '20px'}}>
-            <h3 style={{fontSize: '1.2rem', fontWeight: '700', marginBottom: '16px', color: 'var(--text-main)'}}>
-              Core MockMate AI Capabilities
+          <div style={{marginTop: '24px'}}>
+            <h3 style={{fontSize: '1.25rem', fontFamily: 'var(--font-hotel)', fontWeight: '700', marginBottom: '18px', color: 'var(--gold-light)', textTransform: 'uppercase', letterSpacing: '1px'}}>
+              Grand Concierge Capabilities
             </h3>
 
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px'}}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px'}}>
               <div className="card card-hover">
-                <div style={{color: 'var(--primary)', marginBottom: '10px'}}><IconCode /></div>
-                <h4 style={{fontSize: '1rem', fontWeight: '700', marginBottom: '6px'}}>Dynamic AI Questioning</h4>
+                <div style={{color: 'var(--gold-light)', marginBottom: '12px'}}><IconKey /></div>
+                <h4 style={{fontSize: '1.05rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '6px', color: 'var(--text-light)'}}>Dynamic AI Questioning</h4>
                 <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                  Questions are generated dynamically based on selected difficulty, domain, and candidate skills extracted from uploaded PDF resumes.
+                  Questions are generated dynamically based on selected difficulty, domain, and candidate skills extracted from guest PDF resumes.
                 </p>
               </div>
 
               <div className="card card-hover">
-                <div style={{color: 'var(--cyan)', marginBottom: '10px'}}><IconMic /></div>
-                <h4 style={{fontSize: '1rem', fontWeight: '700', marginBottom: '6px'}}>Voice & Text Response Modes</h4>
+                <div style={{color: 'var(--gold-light)', marginBottom: '12px'}}><IconGramophone /></div>
+                <h4 style={{fontSize: '1.05rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '6px', color: 'var(--text-light)'}}>Gramophone Voice Mode</h4>
                 <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                  Support both typed technical answers and spoken verbal responses with real-time speech-to-text transcription preview.
+                  Supports typed telegram answers and spoken verbal responses with real-time speech transcription preview.
                 </p>
               </div>
 
               <div className="card card-hover">
-                <div style={{color: 'var(--emerald)', marginBottom: '10px'}}><IconChart /></div>
-                <h4 style={{fontSize: '1rem', fontWeight: '700', marginBottom: '6px'}}>Semantic Vector Evaluation</h4>
+                <div style={{color: 'var(--gold-light)', marginBottom: '12px'}}><IconLedger /></div>
+                <h4 style={{fontSize: '1.05rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '6px', color: 'var(--text-light)'}}>Vector Evaluation Ledger</h4>
                 <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                  Evaluates answers using Sentence Transformer vector embeddings and multi-factor scoring (Technical, Accuracy, Relevance, Grammar, Communication).
+                  Evaluates responses using Sentence Transformer vector embeddings and multi-factor scoring (Technical, Accuracy, Relevance, Grammar, Communication).
                 </p>
               </div>
 
               <div className="card card-hover">
-                <div style={{color: 'var(--amber)', marginBottom: '10px'}}><IconFile /></div>
-                <h4 style={{fontSize: '1rem', fontWeight: '700', marginBottom: '6px'}}>Resume Skill Parser</h4>
+                <div style={{color: 'var(--gold-light)', marginBottom: '12px'}}><IconFeather /></div>
+                <h4 style={{fontSize: '1.05rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '6px', color: 'var(--text-light)'}}>PDF Resume Parser</h4>
                 <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                  Parses PDF resumes to extract candidate technical skill profiles (Python, React, SQL, AWS, DSA) for targeted questioning.
+                  Parses guest PDF resumes to extract candidate technical skill profiles (Python, React, SQL, AWS, DSA) for targeted questioning.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Workflow Sequence */}
-          <div className="card" style={{marginTop: '28px', padding: '24px'}}>
-            <h3 style={{fontSize: '1.1rem', fontWeight: '700', marginBottom: '20px', textAlign: 'center'}}>
-              Assessment Process Flow
+          <div className="card" style={{marginTop: '32px', padding: '28px'}}>
+            <h3 style={{fontSize: '1.15rem', fontFamily: 'var(--font-hotel)', fontWeight: '700', marginBottom: '22px', textAlign: 'center', color: 'var(--gold-light)', letterSpacing: '1px'}}>
+              The Grand Assessment Sequence
             </h3>
             
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px'}}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '18px'}}>
               <div style={{textAlign: 'center'}}>
-                <div className="badge badge-slate" style={{marginBottom: '8px', fontSize: '0.8rem'}}>Step 1</div>
-                <h5 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '4px'}}>Configure Setup</h5>
+                <div className="badge badge-slate" style={{marginBottom: '10px', fontSize: '0.75rem'}}>Suite 01</div>
+                <h5 style={{fontSize: '0.95rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '4px'}}>Configure Setup</h5>
                 <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Select domain, difficulty level, and response format.</p>
               </div>
 
               <div style={{textAlign: 'center'}}>
-                <div className="badge badge-slate" style={{marginBottom: '8px', fontSize: '0.8rem'}}>Step 2</div>
-                <h5 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '4px'}}>Answer Questions</h5>
-                <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Submit typed or voice answers under timed interview conditions.</p>
+                <div className="badge badge-slate" style={{marginBottom: '10px', fontSize: '0.75rem'}}>Suite 02</div>
+                <h5 style={{fontSize: '0.95rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '4px'}}>Answer Questions</h5>
+                <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Submit telegram or voice answers under timed conditions.</p>
               </div>
 
               <div style={{textAlign: 'center'}}>
-                <div className="badge badge-slate" style={{marginBottom: '8px', fontSize: '0.8rem'}}>Step 3</div>
-                <h5 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '4px'}}>AI Evaluation</h5>
+                <div className="badge badge-slate" style={{marginBottom: '10px', fontSize: '0.75rem'}}>Suite 03</div>
+                <h5 style={{fontSize: '0.95rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '4px'}}>AI Evaluation</h5>
                 <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Semantic transformer analysis rates technical depth & accuracy.</p>
               </div>
 
               <div style={{textAlign: 'center'}}>
-                <div className="badge badge-slate" style={{marginBottom: '8px', fontSize: '0.8rem'}}>Step 4</div>
-                <h5 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '4px'}}>Download Report</h5>
+                <div className="badge badge-slate" style={{marginBottom: '10px', fontSize: '0.75rem'}}>Suite 04</div>
+                <h5 style={{fontSize: '0.95rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '4px'}}>Parchment Report</h5>
                 <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Review competency breakdown and export official PDF certificate.</p>
               </div>
             </div>
@@ -280,18 +275,18 @@
       };
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '380px', margin: '30px auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '400px', margin: '30px auto'}}>
           <div className="card">
             <div style={{textAlign: 'center', marginBottom: '14px'}}>
-              <img src="/src/assets/logo.png" alt="MockMate AI Logo" style={{width: '48px', height: '48px', borderRadius: '10px'}} />
+              <img src="/src/assets/logo.png" alt="MockMate Hotel Emblem" style={{width: '56px', height: '56px', borderRadius: '8px', border: '1px solid var(--gold-primary)'}} />
             </div>
-            <h2 style={{fontSize: '1.4rem', fontWeight: '800', marginBottom: '4px', textAlign: 'center'}}>Candidate Sign In</h2>
+            <h2 style={{fontSize: '1.4rem', fontFamily: 'var(--font-serif)', fontWeight: '800', marginBottom: '4px', textAlign: 'center', color: 'var(--gold-light)'}}>Guest Sign In</h2>
             <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem', textAlign: 'center', marginBottom: '18px'}}>
-              Sign in to MockMate AI to manage candidate assessments
+              Sign in to access your MockMate Grand Hotel evaluation records
             </p>
 
             {error && (
-              <div style={{padding: '10px', background: 'rgba(244,63,94,0.1)', border: '1px solid rgba(244,63,94,0.3)', color: '#fca5a5', borderRadius: '6px', fontSize: '0.85rem', marginBottom: '14px'}}>
+              <div style={{padding: '10px', background: 'var(--burgundy-bg)', border: '1px solid #8f2d2d', color: '#fca5a5', borderRadius: '4px', fontSize: '0.85rem', marginBottom: '14px'}}>
                 {error}
               </div>
             )}
@@ -299,7 +294,7 @@
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Email Address</label>
-                <input type="email" className="form-input" placeholder="candidate@example.com" value={email} onChange={e => setEmail(e.target.value)} required />
+                <input type="email" className="form-input" placeholder="guest@example.com" value={email} onChange={e => setEmail(e.target.value)} required />
               </div>
 
               <div className="form-group">
@@ -308,16 +303,16 @@
               </div>
 
               <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '6px'}} disabled={loading}>
-                {loading ? 'Authenticating...' : 'Sign In'}
+                {loading ? 'Authenticating Guest...' : 'Sign In'}
               </button>
 
               <button type="button" className="btn btn-secondary" style={{width: '100%', marginTop: '10px'}} onClick={handleDemoLogin} disabled={loading}>
-                Quick Demo User Sign In
+                Quick Demo Guest Access
               </button>
             </form>
 
-            <div style={{textAlign: 'center', marginTop: '16px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
-              Don't have an account? <span style={{color: '#818cf8', cursor: 'pointer', fontWeight: '600'}} onClick={() => navigate('register')}>Register</span>
+            <div style={{textAlign: 'center', marginTop: '18px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
+              New guest? <span style={{color: 'var(--gold-light)', cursor: 'pointer', fontWeight: '700'}} onClick={() => navigate('register')}>Register Account</span>
             </div>
           </div>
         </div>
@@ -353,31 +348,31 @@
       };
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '400px', margin: '30px auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '420px', margin: '30px auto'}}>
           <div className="card">
             <div style={{textAlign: 'center', marginBottom: '14px'}}>
-              <img src="/src/assets/logo.png" alt="MockMate AI Logo" style={{width: '48px', height: '48px', borderRadius: '10px'}} />
+              <img src="/src/assets/logo.png" alt="MockMate Hotel Emblem" style={{width: '56px', height: '56px', borderRadius: '8px', border: '1px solid var(--gold-primary)'}} />
             </div>
-            <h2 style={{fontSize: '1.4rem', fontWeight: '800', marginBottom: '4px', textAlign: 'center'}}>Create Account</h2>
+            <h2 style={{fontSize: '1.4rem', fontFamily: 'var(--font-serif)', fontWeight: '800', marginBottom: '4px', textAlign: 'center', color: 'var(--gold-light)'}}>Register New Guest</h2>
             <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem', textAlign: 'center', marginBottom: '18px'}}>
-              Register a new account on MockMate AI
+              Register a new guest account at MockMate Grand Hotel
             </p>
 
             {error && (
-              <div style={{padding: '10px', background: 'rgba(244,63,94,0.1)', border: '1px solid rgba(244,63,94,0.3)', color: '#fca5a5', borderRadius: '6px', fontSize: '0.85rem', marginBottom: '14px'}}>
+              <div style={{padding: '10px', background: 'var(--burgundy-bg)', border: '1px solid #8f2d2d', color: '#fca5a5', borderRadius: '4px', fontSize: '0.85rem', marginBottom: '14px'}}>
                 {error}
               </div>
             )}
 
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label>Full Name</label>
+                <label>Full Guest Name</label>
                 <input type="text" className="form-input" placeholder="John Doe" value={name} onChange={e => setName(e.target.value)} required />
               </div>
 
               <div className="form-group">
                 <label>Email Address</label>
-                <input type="email" className="form-input" placeholder="candidate@example.com" value={email} onChange={e => setEmail(e.target.value)} required />
+                <input type="email" className="form-input" placeholder="guest@example.com" value={email} onChange={e => setEmail(e.target.value)} required />
               </div>
 
               <div className="form-group">
@@ -391,12 +386,12 @@
               </div>
 
               <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '6px'}} disabled={loading}>
-                {loading ? 'Registering...' : 'Register Account'}
+                {loading ? 'Registering Guest...' : 'Register Account'}
               </button>
             </form>
 
-            <div style={{textAlign: 'center', marginTop: '16px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
-              Already have an account? <span style={{color: '#818cf8', cursor: 'pointer', fontWeight: '600'}} onClick={() => navigate('login')}>Sign In</span>
+            <div style={{textAlign: 'center', marginTop: '18px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
+              Already registered? <span style={{color: 'var(--gold-light)', cursor: 'pointer', fontWeight: '700'}} onClick={() => navigate('login')}>Sign In</span>
             </div>
           </div>
         </div>
@@ -441,24 +436,24 @@
               datasets: [{
                 label: 'Assessment Overall Score (0-10)',
                 data: data.score_trends.map(t => t.score),
-                borderColor: '#6366f1',
-                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                borderColor: '#c59b27',
+                backgroundColor: 'rgba(197, 155, 39, 0.12)',
                 borderWidth: 2,
                 fill: true,
                 tension: 0.2,
-                pointBackgroundColor: '#4f46e5',
-                pointRadius: 4
+                pointBackgroundColor: '#e5c158',
+                pointRadius: 5
               }]
             },
             options: {
               responsive: true,
               maintainAspectRatio: false,
               scales: {
-                y: { min: 0, max: 10, grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } },
-                x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } }
+                y: { min: 0, max: 10, grid: { color: 'rgba(197, 155, 39, 0.1)' }, ticks: { color: '#c4b5a2', font: { family: 'Playfair Display' } } },
+                x: { grid: { color: 'rgba(197, 155, 39, 0.1)' }, ticks: { color: '#c4b5a2', font: { family: 'Playfair Display' } } }
               },
               plugins: {
-                legend: { labels: { color: '#f9fafc', font: { family: 'Inter', size: 12 } } }
+                legend: { labels: { color: '#f5ebe0', font: { family: 'Cinzel', size: 12 } } }
               }
             }
           });
@@ -483,9 +478,9 @@
 
       if (loading) {
         return (
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '240px', flexDirection: 'column', gap: '12px'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '260px', flexDirection: 'column', gap: '14px'}}>
             <div className="spinner-std"></div>
-            <div style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>Loading Dashboard Data...</div>
+            <div style={{color: 'var(--gold-light)', fontSize: '0.95rem', fontFamily: 'var(--font-hotel)'}}>Retrieving Guest Ledger...</div>
           </div>
         );
       }
@@ -493,15 +488,15 @@
       return (
         <div className="animate-fade-in">
           {/* Header */}
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '14px'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px', flexWrap: 'wrap', gap: '14px'}}>
             <div>
-              <h1 style={{fontSize: '1.65rem', fontWeight: '800', letterSpacing: '-0.3px'}}>Performance Dashboard</h1>
-              <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
+              <h1 style={{fontSize: '1.85rem', fontFamily: 'var(--font-serif)', fontWeight: '800'}}>Grand Guest Ledger</h1>
+              <p style={{color: 'var(--text-secondary)', fontSize: '0.875rem'}}>
                 Candidate interview readiness and historical evaluation insights
               </p>
             </div>
             <button className="btn btn-primary" onClick={() => navigate('setup')}>
-              Start New Assessment
+              <IconBell /> New Assessment Suite
             </button>
           </div>
 
@@ -513,7 +508,7 @@
             </div>
 
             <div className="kpi-card">
-              <div className="kpi-title">Average Score</div>
+              <div className="kpi-title">Average Ledger Score</div>
               <div className="kpi-value">
                 {data.average_score.toFixed(1)} <span style={{fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: '500'}}>/ 10</span>
               </div>
@@ -521,7 +516,7 @@
 
             <div className="kpi-card">
               <div className="kpi-title">Best Score</div>
-              <div className="kpi-value" style={{color: '#6ee7b7'}}>
+              <div className="kpi-value" style={{color: 'var(--gold-light)'}}>
                 {data.best_score.toFixed(1)} <span style={{fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: '500'}}>/ 10</span>
               </div>
             </div>
@@ -533,64 +528,66 @@
           </div>
 
           {/* Resume Banner with Topic Illustration */}
-          <div className="card" style={{marginBottom: '20px'}}>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', alignItems: 'center'}}>
+          <div className="card" style={{marginBottom: '24px'}}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '18px', alignItems: 'center'}}>
               <div>
-                <h4 style={{fontSize: '0.95rem', fontWeight: '700', marginBottom: '4px'}}>Resume Profile Customization</h4>
-                <p style={{color: 'var(--text-secondary)', fontSize: '0.825rem', marginBottom: '10px'}}>
-                  Upload candidate PDF resume to generate skill-targeted technical questions matching candidate background.
+                <h4 style={{fontSize: '1.05rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '6px', color: 'var(--gold-light)'}}>
+                  Resume Guest Registry Customization
+                </h4>
+                <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '14px'}}>
+                  Upload guest PDF resume to generate skill-targeted technical questions matching candidate background.
                 </p>
                 
-                <label className="btn btn-secondary btn-sm" style={{cursor: 'pointer', marginBottom: '10px'}}>
-                  {uploading ? 'Parsing PDF...' : 'Upload PDF Resume'}
+                <label className="btn btn-secondary btn-sm" style={{cursor: 'pointer', marginBottom: '12px'}}>
+                  <IconFeather /> {uploading ? 'Parsing PDF...' : 'Upload PDF Resume'}
                   <input type="file" accept=".pdf" style={{display: 'none'}} onChange={handleFileUpload} disabled={uploading} />
                 </label>
 
                 {data.extracted_skills.length > 0 && (
-                  <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '6px'}}>
+                  <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '8px'}}>
                     {data.extracted_skills.map((skill, idx) => (
-                      <span key={idx} className="badge badge-indigo">{skill}</span>
+                      <span key={idx} className="badge badge-gold">{skill}</span>
                     ))}
                   </div>
                 )}
-                {uploadMsg && <div style={{fontSize: '0.8rem', color: '#6ee7b7', marginTop: '6px'}}>{uploadMsg}</div>}
+                {uploadMsg && <div style={{fontSize: '0.85rem', color: '#a7f3d0', marginTop: '8px'}}>{uploadMsg}</div>}
               </div>
 
               <div>
-                <img src="/src/assets/resume.jpg" alt="Resume Analysis" className="img-card" style={{maxHeight: '150px'}} />
+                <img src="/src/assets/resume.jpg" alt="Guest Registry Book" className="img-card" style={{maxHeight: '160px'}} />
               </div>
             </div>
           </div>
 
           {/* Charts & Breakdown */}
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '20px'}}>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '18px', marginBottom: '24px'}}>
             <div className="card">
-              <h4 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '14px'}}>Score Progress Trend</h4>
-              <div style={{height: '200px', position: 'relative'}}>
+              <h4 style={{fontSize: '0.95rem', fontFamily: 'var(--font-hotel)', fontWeight: '700', marginBottom: '16px', color: 'var(--gold-light)'}}>Score Progress Trend</h4>
+              <div style={{height: '210px', position: 'relative'}}>
                 {data.score_trends.length > 0 ? (
                   <canvas ref={chartRef}></canvas>
                 ) : (
-                  <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', color: 'var(--text-muted)', fontSize: '0.825rem'}}>
-                    No interview data recorded yet.
+                  <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', color: 'var(--text-muted)', fontSize: '0.85rem'}}>
+                    No assessment records found in guest ledger.
                   </div>
                 )}
               </div>
             </div>
 
             <div className="card">
-              <h4 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '14px'}}>Competency Analysis</h4>
+              <h4 style={{fontSize: '0.95rem', fontFamily: 'var(--font-hotel)', fontWeight: '700', marginBottom: '16px', color: 'var(--gold-light)'}}>Competency Analysis</h4>
               
-              <div style={{marginBottom: '12px'}}>
-                <div style={{fontSize: '0.8rem', fontWeight: '700', color: '#6ee7b7', marginBottom: '4px'}}>Key Strengths</div>
-                <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                  {data.strong_areas.map((sa, i) => <li key={i} style={{marginBottom: '2px'}}>{sa}</li>)}
+              <div style={{marginBottom: '14px'}}>
+                <div style={{fontSize: '0.85rem', fontWeight: '700', color: '#a7f3d0', marginBottom: '4px'}}>Key Strengths</div>
+                <ul style={{paddingLeft: '18px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
+                  {data.strong_areas.map((sa, i) => <li key={i} style={{marginBottom: '3px'}}>{sa}</li>)}
                 </ul>
               </div>
 
               <div>
-                <div style={{fontSize: '0.8rem', fontWeight: '700', color: '#fca5a5', marginBottom: '4px'}}>Target Improvement Areas</div>
-                <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                  {data.weak_areas.map((wa, i) => <li key={i} style={{marginBottom: '2px'}}>{wa}</li>)}
+                <div style={{fontSize: '0.85rem', fontWeight: '700', color: '#fca5a5', marginBottom: '4px'}}>Target Improvement Areas</div>
+                <ul style={{paddingLeft: '18px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
+                  {data.weak_areas.map((wa, i) => <li key={i} style={{marginBottom: '3px'}}>{wa}</li>)}
                 </ul>
               </div>
             </div>
@@ -598,9 +595,9 @@
 
           {/* Recent History Table */}
           <div className="card">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px'}}>
-              <h4 style={{fontSize: '0.95rem', fontWeight: '700'}}>Recent Assessment Sessions</h4>
-              <button className="btn btn-outline btn-sm" onClick={() => navigate('history')}>View Full History</button>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px'}}>
+              <h4 style={{fontSize: '1.05rem', fontFamily: 'var(--font-serif)', fontWeight: '700', color: 'var(--gold-light)'}}>Recent Assessment Sessions</h4>
+              <button className="btn btn-outline btn-sm" onClick={() => navigate('history')}>View Full Archive</button>
             </div>
 
             {data.recent_interviews.length > 0 ? (
@@ -623,7 +620,7 @@
                         <td><span className="badge badge-slate">{item.domain}</span></td>
                         <td><span className="badge badge-slate">{item.difficulty}</span></td>
                         <td>{item.mode}</td>
-                        <td style={{fontWeight: '700', color: item.total_score >= 7 ? '#6ee7b7' : '#fcd34d'}}>
+                        <td style={{fontWeight: '700', color: item.total_score >= 7 ? 'var(--gold-light)' : '#fcd34d'}}>
                           {item.total_score.toFixed(1)} / 10
                         </td>
                         <td>
@@ -637,8 +634,8 @@
                 </table>
               </div>
             ) : (
-              <div style={{textAlign: 'center', padding: '16px', color: 'var(--text-muted)', fontSize: '0.85rem'}}>
-                No interview sessions recorded. Click "Start New Assessment" to begin.
+              <div style={{textAlign: 'center', padding: '20px', color: 'var(--text-muted)', fontSize: '0.875rem'}}>
+                No interview sessions recorded. Click "New Assessment Suite" to begin.
               </div>
             )}
           </div>
@@ -682,42 +679,44 @@
       };
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '600px', margin: '16px auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '640px', margin: '16px auto'}}>
           <div className="card">
-            <h2 style={{fontSize: '1.4rem', fontWeight: '800', marginBottom: '4px'}}>Configure Assessment Setup</h2>
-            <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '18px'}}>
+            <h2 style={{fontSize: '1.5rem', fontFamily: 'var(--font-serif)', fontWeight: '800', marginBottom: '4px', color: 'var(--gold-light)'}}>
+              Configure Assessment Suite
+            </h2>
+            <p style={{color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '20px'}}>
               Customize interview domain, difficulty level, and response format
             </p>
 
             <div className="form-group">
               <label>Technical Domain</label>
               <select className="form-select" value={domain} onChange={e => setDomain(e.target.value)}>
-                <option value="Software Development">Software Development</option>
-                <option value="Artificial Intelligence">Artificial Intelligence</option>
-                <option value="Data Science">Data Science</option>
+                <option value="Software Development">Software Architecture & Development</option>
+                <option value="Artificial Intelligence">Artificial Intelligence Systems</option>
+                <option value="Data Science">Data Science & Engineering</option>
                 <option value="Data Structures">Data Structures & Algorithms</option>
                 <option value="Database">Database & SQL Systems</option>
-                <option value="HR">HR & Behavioral</option>
+                <option value="HR">HR & Technical Leadership</option>
               </select>
             </div>
 
             <div className="form-group">
               <label>Difficulty Level</label>
-              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px'}}>
+              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px'}}>
                 {['Beginner', 'Intermediate', 'Advanced'].map(lvl => (
                   <div
                     key={lvl}
                     className="card card-hover"
                     style={{
-                      padding: '10px 6px',
+                      padding: '12px 8px',
                       textAlign: 'center',
                       cursor: 'pointer',
-                      borderColor: difficulty === lvl ? 'var(--primary)' : 'var(--border-muted)',
-                      background: difficulty === lvl ? 'var(--primary-light)' : '#0d1322'
+                      borderColor: difficulty === lvl ? 'var(--gold-primary)' : 'var(--gold-dark)',
+                      background: difficulty === lvl ? 'rgba(197, 155, 39, 0.18)' : '#130a07'
                     }}
                     onClick={() => setDifficulty(lvl)}
                   >
-                    <div style={{fontWeight: '700', fontSize: '0.825rem'}}>{lvl}</div>
+                    <div style={{fontWeight: '700', fontSize: '0.85rem', fontFamily: 'var(--font-hotel)'}}>{lvl}</div>
                   </div>
                 ))}
               </div>
@@ -725,21 +724,21 @@
 
             <div className="form-group">
               <label>Number of Questions</label>
-              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px'}}>
+              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px'}}>
                 {[5, 10, 15].map(cnt => (
                   <div
                     key={cnt}
                     className="card card-hover"
                     style={{
-                      padding: '10px 6px',
+                      padding: '12px 8px',
                       textAlign: 'center',
                       cursor: 'pointer',
-                      borderColor: numQuestions === cnt ? 'var(--primary)' : 'var(--border-muted)',
-                      background: numQuestions === cnt ? 'var(--primary-light)' : '#0d1322'
+                      borderColor: numQuestions === cnt ? 'var(--gold-primary)' : 'var(--gold-dark)',
+                      background: numQuestions === cnt ? 'rgba(197, 155, 39, 0.18)' : '#130a07'
                     }}
                     onClick={() => setNumQuestions(cnt)}
                   >
-                    <div style={{fontWeight: '700', fontSize: '0.825rem'}}>{cnt} Questions</div>
+                    <div style={{fontWeight: '700', fontSize: '0.85rem', fontFamily: 'var(--font-hotel)'}}>{cnt} Questions</div>
                   </div>
                 ))}
               </div>
@@ -747,56 +746,56 @@
 
             <div className="form-group">
               <label>Response Mode</label>
-              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px'}}>
+              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px'}}>
                 <div
                   className="card card-hover"
                   style={{
-                    padding: '10px',
+                    padding: '12px',
                     textAlign: 'center',
                     cursor: 'pointer',
-                    borderColor: mode === 'Text' ? 'var(--primary)' : 'var(--border-muted)',
-                    background: mode === 'Text' ? 'var(--primary-light)' : '#0d1322'
+                    borderColor: mode === 'Text' ? 'var(--gold-primary)' : 'var(--gold-dark)',
+                    background: mode === 'Text' ? 'rgba(197, 155, 39, 0.18)' : '#130a07'
                   }}
                   onClick={() => setMode('Text')}
                 >
-                  <div style={{fontWeight: '700', fontSize: '0.85rem'}}>Text Input</div>
-                  <div style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>Typed responses</div>
+                  <div style={{fontWeight: '700', fontSize: '0.875rem', fontFamily: 'var(--font-hotel)'}}>Typed Telegram</div>
+                  <div style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>Text responses</div>
                 </div>
 
                 <div
                   className="card card-hover"
                   style={{
-                    padding: '10px',
+                    padding: '12px',
                     textAlign: 'center',
                     cursor: 'pointer',
-                    borderColor: mode === 'Voice' ? 'var(--primary)' : 'var(--border-muted)',
-                    background: mode === 'Voice' ? 'var(--primary-light)' : '#0d1322'
+                    borderColor: mode === 'Voice' ? 'var(--gold-primary)' : 'var(--gold-dark)',
+                    background: mode === 'Voice' ? 'rgba(197, 155, 39, 0.18)' : '#130a07'
                   }}
                   onClick={() => setMode('Voice')}
                 >
-                  <div style={{fontWeight: '700', fontSize: '0.85rem'}}>Voice Recording</div>
+                  <div style={{fontWeight: '700', fontSize: '0.875rem', fontFamily: 'var(--font-hotel)'}}>Gramophone Voice</div>
                   <div style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>Speech-to-text input</div>
                 </div>
               </div>
             </div>
 
-            <div style={{marginBottom: '18px'}}>
-              <label style={{display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer'}}>
+            <div style={{marginBottom: '20px'}}>
+              <label style={{display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer'}}>
                 <input
                   type="checkbox"
                   checked={useResume}
                   onChange={e => setUseResume(e.target.checked)}
                   disabled={!hasResume}
-                  style={{width: '16px', height: '16px'}}
+                  style={{width: '18px', height: '18px', accentColor: 'var(--gold-primary)'}}
                 />
-                <span style={{fontSize: '0.825rem', color: hasResume ? 'var(--text-main)' : 'var(--text-muted)'}}>
-                  Customize questions based on extracted PDF resume skills {hasResume ? '(Resume loaded)' : '(Upload resume in dashboard first)'}
+                <span style={{fontSize: '0.85rem', color: hasResume ? 'var(--text-light)' : 'var(--text-muted)'}}>
+                  Customize questions based on guest PDF resume skills {hasResume ? '(Resume loaded)' : '(Upload resume in guest ledger first)'}
                 </span>
               </label>
             </div>
 
-            <button className="btn btn-primary" style={{width: '100%', padding: '12px'}} onClick={handleCreate} disabled={loading}>
-              {loading ? 'Generating Assessment Questions...' : 'Generate & Start Interview'}
+            <button className="btn btn-primary" style={{width: '100%', padding: '14px'}} onClick={handleCreate} disabled={loading}>
+              {loading ? 'Preparing Assessment Suite...' : 'Generate & Enter Assessment Suite'}
             </button>
           </div>
         </div>
@@ -834,7 +833,7 @@
       const handleMicToggle = async () => {
         if (!isRecording) {
           setIsRecording(true);
-          setTranscriptionMsg('Recording audio... Speak clearly into your microphone.');
+          setTranscriptionMsg('Gramophone recording active... Speak clearly into your microphone.');
           window.voiceService.startRecording(
             (transcript) => {
               setAnswerText(prev => (prev ? prev + ' ' + transcript : transcript));
@@ -846,7 +845,7 @@
           );
         } else {
           setIsRecording(false);
-          setTranscriptionMsg('Processing transcription...');
+          setTranscriptionMsg('Transcribing gramophone recording...');
           const audioBlob = await window.voiceService.stopRecording();
           if (audioBlob) {
             try {
@@ -896,8 +895,8 @@
       if (!interviewData || questions.length === 0) {
         return (
           <div style={{textAlign: 'center', padding: '60px'}}>
-            <h3>No active interview session found.</h3>
-            <button className="btn btn-primary" style={{marginTop: '12px'}} onClick={() => navigate('setup')}>Setup Session</button>
+            <h3>No active assessment suite session found.</h3>
+            <button className="btn btn-primary" style={{marginTop: '14px'}} onClick={() => navigate('setup')}>Setup Session</button>
           </div>
         );
       }
@@ -905,22 +904,22 @@
       const progressPct = ((currentIndex + 1) / questions.length) * 100;
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '780px', margin: '0 auto'}}>
-          {/* Header Track */}
-          <div className="card" style={{marginBottom: '14px', padding: '14px 16px'}}>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '8px'}}>
+        <div className="animate-fade-in" style={{maxWidth: '820px', margin: '0 auto'}}>
+          {/* Vintage Header Track */}
+          <div className="card" style={{marginBottom: '16px', padding: '16px 20px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', flexWrap: 'wrap', gap: '8px'}}>
               <div>
-                <span className="badge badge-indigo">{interviewData.domain}</span>
-                <span className="badge badge-slate" style={{marginLeft: '4px'}}>{interviewData.difficulty}</span>
-                <span className="badge badge-slate" style={{marginLeft: '4px'}}>{interviewData.mode}</span>
+                <span className="badge badge-gold">{interviewData.domain}</span>
+                <span className="badge badge-slate" style={{marginLeft: '6px'}}>{interviewData.difficulty}</span>
+                <span className="badge badge-slate" style={{marginLeft: '6px'}}>{interviewData.mode}</span>
               </div>
 
-              <div style={{display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.825rem'}}>
-                <div style={{fontWeight: '700', color: timerSeconds < 30 ? '#f43f5e' : 'var(--text-main)'}}>
+              <div style={{display: 'flex', alignItems: 'center', gap: '14px', fontSize: '0.85rem', fontFamily: 'var(--font-hotel)'}}>
+                <div style={{fontWeight: '700', color: timerSeconds < 30 ? '#fca5a5' : 'var(--gold-light)'}}>
                   <IconClock /> {formatTime(timerSeconds)}
                 </div>
                 <div style={{color: 'var(--text-secondary)'}}>
-                  Question {currentIndex + 1} of {questions.length}
+                  Telegram {currentIndex + 1} of {questions.length}
                 </div>
               </div>
             </div>
@@ -930,42 +929,42 @@
             </div>
           </div>
 
-          {/* Question Card */}
-          <div className="card">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px'}}>
-              <span style={{fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '700'}}>
-                QUESTION {currentIndex + 1} OF {questions.length}
+          {/* Vintage Telegram Question Card */}
+          <div className="card" style={{border: '2px double var(--gold-primary)'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px'}}>
+              <span style={{fontSize: '0.75rem', fontFamily: 'var(--font-hotel)', color: 'var(--gold-light)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px'}}>
+                TELEGRAM QUERY #{currentIndex + 1}
               </span>
 
               <button
                 className="btn btn-outline btn-sm"
-                style={{padding: '4px 8px', fontSize: '0.75rem'}}
+                style={{padding: '4px 10px', fontSize: '0.75rem'}}
                 onClick={() => setShowHint(!showHint)}
               >
-                <IconHelp /> {showHint ? 'Hide Response Guide' : 'Response Structure Guide'}
+                {showHint ? 'Hide Response Structure' : 'Response Structure Guide'}
               </button>
             </div>
 
-            <h3 style={{fontSize: '1.2rem', fontWeight: '700', lineHeight: '1.4', marginBottom: '14px'}}>
-              {currentQuestion.question}
+            <h3 style={{fontSize: '1.25rem', fontFamily: 'var(--font-typewriter)', fontWeight: '700', lineHeight: '1.5', marginBottom: '16px', color: 'var(--parchment-dark)', background: '#130a07', padding: '14px 16px', borderRadius: '4px', border: '1px dashed var(--gold-dark)'}}>
+              "{currentQuestion.question}"
             </h3>
 
-            {/* Answer Structure Guide Accordion */}
+            {/* Answer Structure Guide */}
             {showHint && (
-              <div style={{padding: '10px 12px', background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '8px', marginBottom: '14px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                <b style={{color: '#a5b4fc'}}>💡 High-Scoring Technical Answer Structure:</b>
-                <ul style={{paddingLeft: '16px', marginTop: '4px'}}>
-                  <li>1. State clear definition/core concept directly.</li>
-                  <li>2. Explain key components, mechanics, or architectural trade-offs.</li>
-                  <li>3. Give a real-world scenario or technical code example.</li>
+              <div style={{padding: '12px 14px', background: 'rgba(197,155,39,0.08)', border: '1px solid var(--gold-dark)', borderRadius: '6px', marginBottom: '16px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
+                <b style={{color: 'var(--gold-light)', fontFamily: 'var(--font-hotel)'}}>💡 High-Scoring Technical Answer Structure:</b>
+                <ul style={{paddingLeft: '18px', marginTop: '6px'}}>
+                  <li>1. State clear technical definition directly.</li>
+                  <li>2. Explain key mechanics & architectural trade-offs.</li>
+                  <li>3. Provide a practical real-world scenario or code example.</li>
                 </ul>
               </div>
             )}
 
             <div className="form-group">
-              <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px'}}>
-                <label>Candidate Answer</label>
-                <span style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>
+              <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px'}}>
+                <label>Candidate Telegram Response</label>
+                <span style={{fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'var(--font-typewriter)'}}>
                   {answerText.split(/\s+/).filter(Boolean).length} words
                 </span>
               </div>
@@ -973,42 +972,42 @@
               <textarea
                 className="form-textarea"
                 rows="7"
-                placeholder="Type your technical response here..."
+                placeholder="Type your technical response here (Vintage typewriter format)..."
                 value={answerText}
                 onChange={e => setAnswerText(e.target.value)}
               />
             </div>
 
             {interviewData.mode === 'Voice' && (
-              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '14px 0'}}>
-                <button className={`mic-btn-std ${isRecording ? 'recording' : ''}`} onClick={handleMicToggle}>
-                  <IconMic />
+              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', margin: '16px 0'}}>
+                <button className={`mic-btn-vintage ${isRecording ? 'recording' : ''}`} onClick={handleMicToggle}>
+                  <IconGramophone />
                 </button>
                 
                 {isRecording && (
-                  <div className="sound-wave-container">
-                    <div className="sound-bar"></div>
-                    <div className="sound-bar"></div>
-                    <div className="sound-bar"></div>
-                    <div className="sound-bar"></div>
-                    <div className="sound-bar"></div>
+                  <div className="gramophone-visualizer">
+                    <div className="gramophone-bar"></div>
+                    <div className="gramophone-bar"></div>
+                    <div className="gramophone-bar"></div>
+                    <div className="gramophone-bar"></div>
+                    <div className="gramophone-bar"></div>
                   </div>
                 )}
 
-                <div style={{fontSize: '0.8rem', color: isRecording ? '#f43f5e' : 'var(--text-muted)'}}>
-                  {isRecording ? 'Recording audio... Click button to finish speech' : 'Click microphone button to record verbal answer'}
+                <div style={{fontSize: '0.825rem', color: isRecording ? '#fca5a5' : 'var(--text-muted)', fontFamily: 'var(--font-serif)'}}>
+                  {isRecording ? 'Gramophone recording active... Click button to finalize speech' : 'Click gramophone icon to record verbal response'}
                 </div>
                 {transcriptionMsg && (
-                  <div style={{fontSize: '0.8rem', color: '#67e8f9'}}>
+                  <div style={{fontSize: '0.825rem', color: 'var(--gold-light)'}}>
                     {transcriptionMsg}
                   </div>
                 )}
               </div>
             )}
 
-            <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '14px'}}>
+            <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '16px'}}>
               <button className="btn btn-emerald" onClick={handleNextSubmit} disabled={submitting}>
-                {submitting ? 'Evaluating...' : (currentIndex + 1 < questions.length ? 'Submit Answer' : 'Finalize Assessment')}
+                {submitting ? 'Evaluating Telegram...' : (currentIndex + 1 < questions.length ? 'Submit Answer' : 'Finalize Assessment')}
               </button>
             </div>
           </div>
@@ -1032,9 +1031,9 @@
 
       if (loading) {
         return (
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '240px', flexDirection: 'column', gap: '12px'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '260px', flexDirection: 'column', gap: '14px'}}>
             <div className="spinner-std"></div>
-            <div style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>Generating Evaluation Report...</div>
+            <div style={{color: 'var(--gold-light)', fontSize: '0.95rem', fontFamily: 'var(--font-hotel)'}}>Generating Parchment Evaluation Report...</div>
           </div>
         );
       }
@@ -1043,73 +1042,73 @@
         return (
           <div style={{textAlign: 'center', padding: '60px'}}>
             <h3>Report not found.</h3>
-            <button className="btn btn-primary" style={{marginTop: '12px'}} onClick={() => navigate('dashboard')}>Return to Dashboard</button>
+            <button className="btn btn-primary" style={{marginTop: '14px'}} onClick={() => navigate('dashboard')}>Return to Guest Ledger</button>
           </div>
         );
       }
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '860px', margin: '0 auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '880px', margin: '0 auto'}}>
           {/* Header Action Banner */}
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap', gap: '10px'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px', flexWrap: 'wrap', gap: '12px'}}>
             <div>
-              <h1 style={{fontSize: '1.65rem', fontWeight: '800'}}>Assessment Evaluation Report</h1>
-              <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
+              <h1 style={{fontSize: '1.85rem', fontFamily: 'var(--font-serif)', fontWeight: '800'}}>Parchment Evaluation Report</h1>
+              <p style={{color: 'var(--text-secondary)', fontSize: '0.875rem'}}>
                 Domain: <b>{result.domain}</b> | Difficulty: <b>{result.difficulty}</b> | Mode: <b>{result.mode}</b>
               </p>
             </div>
 
-            <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap'}}>
+            <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
               <a href={window.api.getPdfUrl(result.id)} target="_blank" download className="btn btn-emerald btn-sm">
-                <IconDownload /> Download PDF Report
+                <IconDownload /> Download PDF Certificate
               </a>
               <button className="btn btn-secondary btn-sm" onClick={() => navigate('setup')}>New Session</button>
-              <button className="btn btn-primary btn-sm" onClick={() => navigate('dashboard')}>Dashboard</button>
+              <button className="btn btn-primary btn-sm" onClick={() => navigate('dashboard')}>Guest Ledger</button>
             </div>
           </div>
 
           {/* Overall Score Circle & Dimension Bars */}
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginBottom: '18px'}}>
-            <div className="card" style={{textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '18px'}}>
-              <h4 style={{fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '12px'}}>Overall Score</h4>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', marginBottom: '22px'}}>
+            <div className="card" style={{textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '22px'}}>
+              <h4 style={{fontSize: '0.85rem', fontFamily: 'var(--font-hotel)', color: 'var(--gold-light)', marginBottom: '14px'}}>Overall Score</h4>
               <div className="score-badge-circle">
                 <span className="score-badge-val">{result.total_score.toFixed(1)}</span>
                 <span style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>/ 10</span>
               </div>
-              <div style={{marginTop: '10px', fontSize: '0.825rem', fontWeight: '600', color: result.total_score >= 7 ? '#6ee7b7' : '#fcd34d'}}>
-                {result.total_score >= 8 ? 'Strong Qualification' : result.total_score >= 6 ? 'Competent Qualification' : 'Needs Technical Practice'}
+              <div style={{marginTop: '14px', fontSize: '0.875rem', fontWeight: '700', fontFamily: 'var(--font-serif)', color: result.total_score >= 7 ? 'var(--gold-light)' : '#fcd34d'}}>
+                {result.total_score >= 8 ? 'First Class Qualification' : result.total_score >= 6 ? 'Competent Qualification' : 'Needs Technical Practice'}
               </div>
             </div>
 
             <div className="card">
-              <h4 style={{fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '10px'}}>Evaluation Metric Breakdown</h4>
+              <h4 style={{fontSize: '0.85rem', fontFamily: 'var(--font-hotel)', color: 'var(--gold-light)', marginBottom: '12px'}}>Evaluation Metric Breakdown</h4>
               
-              <div style={{marginBottom: '8px'}}>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
+              <div style={{marginBottom: '10px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', marginBottom: '3px'}}>
                   <span>Technical Accuracy</span>
                   <span>{result.overall_technical.toFixed(1)} / 10</span>
                 </div>
                 <div className="progress-track"><div className="progress-fill" style={{width: `${(result.overall_technical/10)*100}%`}}></div></div>
               </div>
 
-              <div style={{marginBottom: '8px'}}>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
+              <div style={{marginBottom: '10px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', marginBottom: '3px'}}>
                   <span>Factual Correctness</span>
                   <span>{result.overall_accuracy.toFixed(1)} / 10</span>
                 </div>
                 <div className="progress-track"><div className="progress-fill" style={{width: `${(result.overall_accuracy/10)*100}%`}}></div></div>
               </div>
 
-              <div style={{marginBottom: '8px'}}>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
+              <div style={{marginBottom: '10px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', marginBottom: '3px'}}>
                   <span>Prompt Relevance</span>
                   <span>{result.overall_relevance.toFixed(1)} / 10</span>
                 </div>
                 <div className="progress-track"><div className="progress-fill" style={{width: `${(result.overall_relevance/10)*100}%`}}></div></div>
               </div>
 
-              <div style={{marginBottom: '8px'}}>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
+              <div style={{marginBottom: '10px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', marginBottom: '3px'}}>
                   <span>Communication Clarity</span>
                   <span>{result.overall_communication.toFixed(1)} / 10</span>
                 </div>
@@ -1117,7 +1116,7 @@
               </div>
 
               <div>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', marginBottom: '3px'}}>
                   <span>Language Grammar</span>
                   <span>{result.overall_grammar.toFixed(1)} / 10</span>
                 </div>
@@ -1127,51 +1126,51 @@
           </div>
 
           {/* Strengths & Weaknesses Grid */}
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginBottom: '18px'}}>
-            <div className="card" style={{borderLeft: '3px solid #10b981'}}>
-              <h4 style={{fontSize: '0.85rem', color: '#6ee7b7', marginBottom: '6px'}}>Candidate Strengths</h4>
-              <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                {result.strengths.map((s, i) => <li key={i} style={{marginBottom: '3px'}}>{s}</li>)}
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', marginBottom: '22px'}}>
+            <div className="card" style={{borderLeft: '4px solid #1b4d3e'}}>
+              <h4 style={{fontSize: '0.9rem', fontFamily: 'var(--font-hotel)', color: '#a7f3d0', marginBottom: '8px'}}>Candidate Strengths</h4>
+              <ul style={{paddingLeft: '18px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
+                {result.strengths.map((s, i) => <li key={i} style={{marginBottom: '4px'}}>{s}</li>)}
               </ul>
             </div>
 
-            <div className="card" style={{borderLeft: '3px solid #f43f5e'}}>
-              <h4 style={{fontSize: '0.85rem', color: '#fca5a5', marginBottom: '6px'}}>Areas for Growth</h4>
-              <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                {result.weaknesses.map((w, i) => <li key={i} style={{marginBottom: '3px'}}>{w}</li>)}
+            <div className="card" style={{borderLeft: '4px solid #6b1d1d'}}>
+              <h4 style={{fontSize: '0.9rem', fontFamily: 'var(--font-hotel)', color: '#fca5a5', marginBottom: '8px'}}>Areas for Growth</h4>
+              <ul style={{paddingLeft: '18px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
+                {result.weaknesses.map((w, i) => <li key={i} style={{marginBottom: '4px'}}>{w}</li>)}
               </ul>
             </div>
           </div>
 
           {/* AI Recommendations */}
-          <div className="card" style={{marginBottom: '18px', borderLeft: '3px solid #06b6d4'}}>
-            <h4 style={{fontSize: '0.85rem', color: '#67e8f9', marginBottom: '6px'}}>MockMate AI Recommendations</h4>
-            <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-              {result.suggestions.map((sug, i) => <li key={i} style={{marginBottom: '4px'}}>{sug}</li>)}
+          <div className="card" style={{marginBottom: '22px', borderLeft: '4px solid var(--gold-primary)'}}>
+            <h4 style={{fontSize: '0.9rem', fontFamily: 'var(--font-hotel)', color: 'var(--gold-light)', marginBottom: '8px'}}>MockMate Concierge Recommendations</h4>
+            <ul style={{paddingLeft: '18px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
+              {result.suggestions.map((sug, i) => <li key={i} style={{marginBottom: '5px'}}>{sug}</li>)}
             </ul>
           </div>
 
           {/* Question Breakdown */}
           <div className="card">
-            <h4 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '12px'}}>Question Breakdown</h4>
+            <h4 style={{fontSize: '1.05rem', fontFamily: 'var(--font-serif)', fontWeight: '700', marginBottom: '14px', color: 'var(--gold-light)'}}>Telegram Question Breakdown</h4>
             {result.responses.map((resp, idx) => {
               const qObj = result.questions.find(q => q.id === resp.question_id) || {};
               return (
-                <div key={idx} style={{padding: '10px 12px', background: '#0d1322', borderRadius: '8px', marginBottom: '10px', border: '1px solid var(--border-subtle)'}}>
-                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px'}}>
-                    <h5 style={{fontSize: '0.85rem', fontWeight: '700'}}>Q{idx+1}: {qObj.question}</h5>
-                    <span className="badge badge-emerald">Score: {resp.overall} / 10</span>
+                <div key={idx} style={{padding: '14px 16px', background: '#130a07', borderRadius: '6px', marginBottom: '12px', border: '1px solid var(--gold-dark)'}}>
+                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px'}}>
+                    <h5 style={{fontSize: '0.9rem', fontFamily: 'var(--font-serif)', fontWeight: '700'}}>Telegram #{idx+1}: {qObj.question}</h5>
+                    <span className="badge badge-gold">Score: {resp.overall} / 10</span>
                   </div>
 
-                  <div style={{fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '4px'}}>
+                  <div style={{fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-typewriter)', marginBottom: '6px'}}>
                     <b>Candidate Response:</b> "{resp.answer}"
                   </div>
 
-                  <div style={{fontSize: '0.8rem', color: '#a5b4fc', marginBottom: '4px'}}>
+                  <div style={{fontSize: '0.85rem', color: 'var(--parchment-dark)', marginBottom: '6px'}}>
                     <b>Reference Answer:</b> "{qObj.expected_answer}"
                   </div>
 
-                  <div style={{fontSize: '0.8rem', color: '#67e8f9'}}>
+                  <div style={{fontSize: '0.85rem', color: 'var(--gold-light)'}}>
                     <b>AI Feedback:</b> {resp.feedback} (Semantic Similarity: {Math.round((resp.semantic_similarity || 0) * 100)}%)
                   </div>
                 </div>
@@ -1196,21 +1195,21 @@
 
       if (loading) {
         return (
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '240px', flexDirection: 'column', gap: '12px'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '260px', flexDirection: 'column', gap: '14px'}}>
             <div className="spinner-std"></div>
-            <div style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>Loading Archive...</div>
+            <div style={{color: 'var(--gold-light)', fontSize: '0.95rem', fontFamily: 'var(--font-hotel)'}}>Retrieving Hotel Archives...</div>
           </div>
         );
       }
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '960px', margin: '0 auto'}}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap', gap: '10px'}}>
+        <div className="animate-fade-in" style={{maxWidth: '980px', margin: '0 auto'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px', flexWrap: 'wrap', gap: '12px'}}>
             <div>
-              <h1 style={{fontSize: '1.65rem', fontWeight: '800'}}>Assessment History</h1>
-              <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>Archive of past candidate interview sessions</p>
+              <h1 style={{fontSize: '1.85rem', fontFamily: 'var(--font-serif)', fontWeight: '800'}}>Grand Assessment Archives</h1>
+              <p style={{color: 'var(--text-secondary)', fontSize: '0.875rem'}}>Historical records of candidate evaluation sessions</p>
             </div>
-            <button className="btn btn-primary" onClick={() => navigate('setup')}>Start New Assessment</button>
+            <button className="btn btn-primary" onClick={() => navigate('setup')}><IconBell /> New Assessment Suite</button>
           </div>
 
           <div className="card">
@@ -1238,7 +1237,7 @@
                         <td><span className="badge badge-slate">{item.difficulty}</span></td>
                         <td>{item.mode}</td>
                         <td>{item.questions_count}</td>
-                        <td style={{fontWeight: '700', color: item.total_score >= 7 ? '#6ee7b7' : '#fcd34d'}}>
+                        <td style={{fontWeight: '700', color: item.total_score >= 7 ? 'var(--gold-light)' : '#fcd34d'}}>
                           {item.total_score.toFixed(1)} / 10
                         </td>
                         <td>
@@ -1252,8 +1251,8 @@
                 </table>
               </div>
             ) : (
-              <div style={{textAlign: 'center', padding: '24px', color: 'var(--text-muted)', fontSize: '0.85rem'}}>
-                No past interview records found.
+              <div style={{textAlign: 'center', padding: '28px', color: 'var(--text-muted)', fontSize: '0.875rem'}}>
+                No past interview records found in archives.
               </div>
             )}
           </div>
