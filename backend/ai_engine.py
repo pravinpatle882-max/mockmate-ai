@@ -8,77 +8,77 @@ load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 
-# Local offline question bank for Demo Mode fallback
+# Highly accurate, domain-specific offline question bank for Demo Mode
 OFFLINE_QUESTION_BANK = {
     "Software Development": {
         "Beginner": [
             {
-                "question": "What is the difference between synchronous and asynchronous execution in programming?",
-                "expected_answer": "Synchronous execution blocks the thread until a task finishes, executing line by line sequentially. Asynchronous execution allows tasks to run concurrently in the background without blocking the main event loop or main thread.",
+                "question": "What is the difference between synchronous and asynchronous execution in software development?",
+                "expected_answer": "Synchronous execution blocks thread execution until a task completes, running sequentially line-by-line. Asynchronous execution allows tasks to execute concurrently in the background without blocking the main event loop or thread, using callbacks, promises, or async/await syntax.",
                 "difficulty": "Beginner"
             },
             {
-                "question": "Explain the concept of Object-Oriented Programming (OOP) and its key pillars.",
-                "expected_answer": "OOP is a programming paradigm based on objects containing data and methods. Its core pillars are Encapsulation (hiding internal state), Abstraction (simplifying interface), Inheritance (reusing code across classes), and Polymorphism (overriding methods dynamically).",
+                "question": "Explain the four core pillars of Object-Oriented Programming (OOP) with real-world analogies.",
+                "expected_answer": "The four pillars are: Encapsulation (bundling data and methods while restricting direct state access), Abstraction (hiding complex internal implementation details behind simple public interfaces), Inheritance (reusing attributes/methods from parent classes), and Polymorphism (allowing child classes to provide specialized implementations for shared interface methods).",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What is Version Control and why is Git widely used in software development?",
-                "expected_answer": "Version control tracks and manages changes to software code over time. Git is a distributed version control system that allows multiple developers to branch, merge, track history, and collaborate efficiently without clashing.",
+                "question": "What is a RESTful API and what are the standard HTTP methods used?",
+                "expected_answer": "REST (Representational State Transfer) is an architectural style for network applications using stateless HTTP requests. Core HTTP methods include GET (retrieve resource), POST (create new resource), PUT (full replacement update), PATCH (partial modification), and DELETE (remove resource).",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What are RESTful APIs and what are the standard HTTP methods used?",
-                "expected_answer": "REST (Representational State Transfer) is an architectural style for network applications using stateless HTTP requests. Key methods are GET (read data), POST (create resource), PUT/PATCH (update resource), and DELETE (remove resource).",
+                "question": "What is the difference between Value Types and Reference Types in programming languages?",
+                "expected_answer": "Value types (like primitives: int, float, bool) store their actual data directly in memory stack locations. Reference types (like objects, arrays, classes) store a memory address pointer targeting data located on the dynamic heap memory.",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What is unit testing and why is it important during development?",
-                "expected_answer": "Unit testing tests individual functions, modules, or classes in isolation. It catches bugs early in the development lifecycle, ensures refactoring safety, and verifies core business logic functions as expected.",
+                "question": "What is Unit Testing and why is Test-Driven Development (TDD) practiced?",
+                "expected_answer": "Unit testing verifies individual methods, functions, or modules in total isolation. Test-Driven Development is a practice where developers write failing unit tests first, write minimal code to pass the tests, and then refactor, ensuring high test coverage and regression protection.",
                 "difficulty": "Beginner"
             }
         ],
         "Intermediate": [
             {
-                "question": "Explain SOLID principles in Object-Oriented Design.",
-                "expected_answer": "SOLID stands for: Single Responsibility Principle, Open/Closed Principle, Liskov Substitution Principle, Interface Segregation Principle, and Dependency Inversion Principle. They ensure clean, extensible, and maintainable software architecture.",
+                "question": "Explain the SOLID principles in Object-Oriented Design and why they promote maintainable code.",
+                "expected_answer": "SOLID represents: Single Responsibility (one reason to change), Open/Closed (open for extension, closed for modification), Liskov Substitution (subtypes must be substitutable for base types), Interface Segregation (fine-grained client-specific interfaces), and Dependency Inversion (depend on abstractions, not concrete implementations).",
                 "difficulty": "Intermediate"
             },
             {
-                "question": "How does memory management work in Python (garbage collection & reference counting)?",
-                "expected_answer": "Python uses reference counting as its primary memory management mechanism. When an object's reference count drops to zero, memory is deallocated. Cyclic references are handled by a generational garbage collector.",
+                "question": "How does memory management work in Python (Reference Counting and Garbage Collection)?",
+                "expected_answer": "Python uses reference counting as its primary memory allocation mechanism; when an object's reference counter drops to zero, memory is freed immediately. Cyclic references (where objects reference each other) are detected and deallocated by a background generational garbage collector.",
                 "difficulty": "Intermediate"
             },
             {
-                "question": "What is the difference between monolithic architecture and microservices architecture?",
-                "expected_answer": "A monolith bundles all application services into a single unified codebase and deployment artifact. Microservices decompose the system into small, independently deployable services communicating over APIs, enhancing scalability and isolation.",
+                "question": "What is the difference between Monolithic and Microservices Architecture?",
+                "expected_answer": "A Monolith packages all application domain services into a single unified deployment codebase and process. Microservices split the system into autonomous, independently deployable services communicating over lightweight APIs (gRPC/HTTP), enabling independent scaling and fault isolation.",
                 "difficulty": "Intermediate"
             },
             {
                 "question": "How do Docker containers differ from traditional Virtual Machines (VMs)?",
-                "expected_answer": "Docker containers share the host operating system kernel and isolate applications at the process level, making them lightweight and fast. VMs virtualize complete hardware with full OS instances, requiring more resources and startup time.",
+                "expected_answer": "Containers share the host operating system kernel and isolate processes using Linux namespaces and cgroups, making them lightweight (MBs) and fast to boot. Virtual Machines virtualize full hardware layers, requiring a dedicated guest OS per instance, consuming more memory and CPU.",
                 "difficulty": "Intermediate"
             },
             {
-                "question": "What is CI/CD and how does a automated pipeline benefit software delivery?",
-                "expected_answer": "Continuous Integration & Continuous Deployment (CI/CD) automates building, testing, and deploying software. It enables frequent, reliable code updates, reduces human errors, and speeds up time-to-market.",
+                "question": "What is CI/CD and how does an automated deployment pipeline work?",
+                "expected_answer": "Continuous Integration & Continuous Deployment (CI/CD) automates building, linting, unit testing, image packaging, and deployment whenever code is pushed. It eliminates manual errors, speeds up release cycles, and ensures deployment safety.",
                 "difficulty": "Intermediate"
             }
         ],
         "Advanced": [
             {
-                "question": "How would you design a rate-limiting system for a high-traffic microservices API?",
-                "expected_answer": "Use algorithms like Token Bucket, Leaky Bucket, or Fixed/Sliding Window Log. Store rate limit counters in distributed, low-latency in-memory databases like Redis with atomic operations, and return HTTP 429 Too Many Requests when limits are exceeded.",
+                "question": "How would you design a distributed rate limiter for a high-throughput API gateway?",
+                "expected_answer": "Implement algorithms like Token Bucket or Sliding Window Counter. Store rate limit state in a centralized, low-latency in-memory cache like Redis using atomic Lua scripts to prevent race conditions. Return HTTP status 429 Too Many Requests with retry-after headers when limits are breached.",
                 "difficulty": "Advanced"
             },
             {
-                "question": "Explain Eventual Consistency vs Strong Consistency in distributed systems (CAP Theorem).",
-                "expected_answer": "Under CAP theorem, distributed systems choose between Consistency, Availability, and Partition Tolerance. Strong consistency guarantees all nodes read the latest write immediately (e.g. 2-phase commit). Eventual consistency guarantees that all replicas will converge given time without blocking writes.",
+                "question": "Explain Eventual Consistency vs Strong Consistency in distributed databases under the CAP Theorem.",
+                "expected_answer": "The CAP theorem states distributed systems can only guarantee 2 of Consistency, Availability, and Partition Tolerance. Strong consistency guarantees every read receives the most recent write (using consensus like Raft/Paxos). Eventual consistency favors availability, guaranteeing all replicas converge to identical states over time without blocking client reads.",
                 "difficulty": "Advanced"
             },
             {
-                "question": "What is the N+1 query problem in ORMs and how do you resolve it?",
-                "expected_answer": "The N+1 problem occurs when an application executes 1 initial query to fetch N parent records, then N separate queries to fetch related child records. It is resolved using Eager Loading (JOINs or prefetching relationships in SQLAlchemy/Django ORM).",
+                "question": "What is the N+1 query problem in Object-Relational Mappers (ORMs) and how is it eliminated?",
+                "expected_answer": "The N+1 problem occurs when an application executes 1 initial SQL query to fetch N parent records, then triggers N separate SQL queries to fetch child relationships. It is eliminated by Eager Loading (using SQL JOINs or prefetch_related/joinedload in SQLAlchemy/Django).",
                 "difficulty": "Advanced"
             }
         ]
@@ -86,57 +86,47 @@ OFFLINE_QUESTION_BANK = {
     "Artificial Intelligence": {
         "Beginner": [
             {
-                "question": "What is Artificial Intelligence and how does Machine Learning differ from traditional programming?",
-                "expected_answer": "AI is the broad field of creating systems capable of human-like intelligence. Traditional programming uses explicit rules and input data to produce output, while Machine Learning feeds input data and desired outputs into algorithms to automatically learn patterns and rules.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "What is Supervised Learning vs Unsupervised Learning?",
-                "expected_answer": "Supervised learning trains models on labeled dataset pairs (inputs and target answers), like classification and regression. Unsupervised learning finds hidden patterns, clusters, or representations in unlabeled data, like K-Means clustering.",
+                "question": "What is Machine Learning and how does Supervised Learning differ from Unsupervised Learning?",
+                "expected_answer": "Machine Learning allows systems to learn patterns from data without explicit procedural programming. Supervised learning trains models on labeled input-output pairs (classification/regression). Unsupervised learning discovers latent structures, groupings, or representations in unlabeled data (clustering/dimensionality reduction).",
                 "difficulty": "Beginner"
             },
             {
                 "question": "What is Overfitting in machine learning models and how can it be prevented?",
-                "expected_answer": "Overfitting happens when a model learns noise and specific details of the training data too closely, failing to generalize to unseen test data. It is prevented using cross-validation, regularization (L1/L2), dropout, pruning, and collecting more training data.",
+                "expected_answer": "Overfitting occurs when a model memorizes noise and training data details, performing well on training sets but failing to generalize to unseen test data. Prevention techniques include cross-validation, regularization (L1/L2), dropout, early stopping, data augmentation, and reducing model complexity.",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What is the purpose of an Activation Function in Artificial Neural Networks?",
-                "expected_answer": "Activation functions introduce non-linearity into neural network layers, enabling the network to learn complex non-linear relationships. Popular examples include ReLU, Sigmoid, and Softmax.",
+                "question": "What is the function of an Activation Function in Neural Networks?",
+                "expected_answer": "Activation functions introduce non-linear transformations into network layers, allowing neural networks to learn complex non-linear boundary mappings. Common examples are ReLU (mitigates vanishing gradients), Sigmoid (probability output), and Softmax (multi-class probabilities).",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What is Large Language Model (LLM) fine-tuning?",
-                "expected_answer": "Fine-tuning takes a pre-trained general language model and further trains it on a specific domain dataset (e.g., medical, legal, code) to improve performance on specialized tasks.",
+                "question": "What is a Transformer architecture and how does Self-Attention work?",
+                "expected_answer": "Transformers replace sequential recurrent connections (RNNs) with multi-head self-attention mechanisms. Self-attention calculates similarity scores between all tokens in a sequence simultaneously, assigning contextual relevance weights dynamically.",
+                "difficulty": "Beginner"
+            },
+            {
+                "question": "What is Fine-Tuning in Large Language Models (LLMs)?",
+                "expected_answer": "Fine-tuning takes a pre-trained foundation language model and updates its weights on a specialized task-specific dataset (e.g. medical, legal, code) to improve accuracy, domain vocabulary, and instruction adherence.",
                 "difficulty": "Beginner"
             }
         ],
         "Intermediate": [
             {
-                "question": "Explain the Transformer architecture and the Self-Attention mechanism.",
-                "expected_answer": "Transformers rely on multi-head self-attention mechanisms to compute dependencies between all tokens in a sequence simultaneously without sequential recurrence (RNNs). Attention weights calculate how relevant each token is to every other token.",
+                "question": "What is Retrieval-Augmented Generation (RAG) and why is it preferred over fine-tuning for dynamic knowledge?",
+                "expected_answer": "RAG retrieves relevant domain documents from a vector database using semantic similarity search at query time and injects them into the LLM prompt context. It provides verifiable source attribution, reduces hallucinations, and updates knowledge in real-time without expensive model retraining.",
                 "difficulty": "Intermediate"
             },
             {
-                "question": "What is Retrieval-Augmented Generation (RAG) and why is it useful for LLM applications?",
-                "expected_answer": "RAG combines vector databases with LLMs to retrieve relevant external domain documents at query time and feed them as context to the model, reducing hallucinations and providing up-to-date domain knowledge without re-training.",
-                "difficulty": "Intermediate"
-            },
-            {
-                "question": "Explain the Vanishing and Exploding Gradient problem in Deep Neural Networks.",
-                "expected_answer": "During backpropagation through many layers, gradients multiplied repeatedly can diminish to zero (vanishing) or blow up to infinity (exploding). Solutions include ReLU activations, residual connections (ResNet), layer normalization, and gradient clipping.",
+                "question": "Explain the Vanishing and Exploding Gradient problem during backpropagation.",
+                "expected_answer": "During deep network backpropagation, repeatedly multiplying small derivative weights causes gradients to vanish to zero (stopping weight updates), while large weights cause gradients to explode to infinity (causing instability). Solutions include residual skip connections (ResNet), layer normalization, ReLU activations, and gradient clipping.",
                 "difficulty": "Intermediate"
             }
         ],
         "Advanced": [
             {
-                "question": "Compare Reinforcement Learning from Human Feedback (RLHF) vs Direct Preference Optimization (DPO).",
-                "expected_answer": "RLHF uses a reward model trained on human rankings combined with PPO optimization to align LLMs. DPO simplifies this by directly optimizing the policy model on preferred vs dispreferred text pairs without needing a separate reward model or complex PPO training loop.",
-                "difficulty": "Advanced"
-            },
-            {
-                "question": "How do Vector Embeddings and Cosine Similarity function in Semantic Search?",
-                "expected_answer": "Vector embeddings project text into continuous high-dimensional vector spaces where semantic similarity corresponds to vector proximity. Cosine similarity calculates the dot product divided by the product of vector norms, measuring directional alignment regardless of magnitude.",
+                "question": "Compare Reinforcement Learning from Human Feedback (RLHF) with Direct Preference Optimization (DPO).",
+                "expected_answer": "RLHF trains a separate reward model on human pairwise preferences and uses PPO policy gradient optimization to align LLMs. DPO mathematically reformulates the objective function to directly optimize policy weights on preferred vs dispreferred response pairs without needing a separate reward model or PPO training loop.",
                 "difficulty": "Advanced"
             }
         ]
@@ -144,47 +134,32 @@ OFFLINE_QUESTION_BANK = {
     "Data Science": {
         "Beginner": [
             {
-                "question": "What is the Data Science Lifecycle and what are its key stages?",
-                "expected_answer": "The lifecycle includes Problem Definition, Data Collection, Data Cleaning & Preprocessing, Exploratory Data Analysis (EDA), Feature Engineering, Model Training & Evaluation, and Deployment.",
+                "question": "What is the standard Data Science Lifecycle from problem definition to deployment?",
+                "expected_answer": "The lifecycle includes: Problem Definition -> Data Acquisition -> Data Cleaning & Imputation -> Exploratory Data Analysis (EDA) -> Feature Engineering -> Model Selection & Training -> Validation & Hyperparameter Tuning -> Production Deployment & Monitoring.",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What is the difference between Mean, Median, and Mode?",
-                "expected_answer": "Mean is the arithmetic average of all numbers. Median is the middle value in a sorted dataset (robust to outliers). Mode is the most frequently occurring value in the dataset.",
+                "question": "What is the Bias-Variance Tradeoff in statistical modeling?",
+                "expected_answer": "Bias is error caused by overly simple assumptions (underfitting). Variance is error caused by extreme sensitivity to small fluctuations in training data (overfitting). Total generalization error is minimized by striking an optimal balance between model complexity and regularization.",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What is the Bias-Variance Tradeoff in machine learning?",
-                "expected_answer": "Bias is error introduced by oversimplifying assumptions (underfitting). Variance is error from sensitivity to small fluctuations in training data (overfitting). Total error is minimized by finding the optimal balance between bias and variance.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "What is Precision vs Recall and what is the F1-Score?",
-                "expected_answer": "Precision is True Positives / (True Positives + False Positives). Recall is True Positives / (True Positives + False Negatives). F1-Score is the harmonic mean of precision and recall, balancing both metrics.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "How do you handle missing values in a dataset?",
-                "expected_answer": "Missing values can be handled by dropping rows/columns (if minimal), imputing with mean/median/mode, or using model-based imputation algorithms like K-Nearest Neighbors (KNN) or MICE.",
+                "question": "What is Precision, Recall, and the F1-Score in binary classification?",
+                "expected_answer": "Precision measures True Positives / (True Positives + False Positives). Recall measures True Positives / (True Positives + False Negatives). F1-Score is the harmonic mean of Precision and Recall, providing a balanced metric for imbalanced datasets.",
                 "difficulty": "Beginner"
             }
         ],
         "Intermediate": [
             {
-                "question": "Explain the Receiver Operating Characteristic (ROC) curve and Area Under Curve (AUC).",
-                "expected_answer": "The ROC curve plots True Positive Rate against False Positive Rate across various classification thresholds. AUC measures the entire 2D area under the ROC curve, representing the model's ability to distinguish between positive and negative classes (1.0 is perfect, 0.5 is random chance).",
-                "difficulty": "Intermediate"
-            },
-            {
-                "question": "What is Feature Engineering and why is One-Hot Encoding used?",
-                "expected_answer": "Feature engineering transforms raw data into numerical features that better represent business logic to ML models. One-Hot Encoding converts categorical variables into binary vectors so algorithms do not assume ordinal relationships.",
+                "question": "Explain the ROC Curve and Area Under the Curve (AUC) metric.",
+                "expected_answer": "The Receiver Operating Characteristic (ROC) curve plots True Positive Rate against False Positive Rate across all classification thresholds. AUC measures the entire 2D area beneath the ROC curve; 1.0 represents a perfect classifier and 0.5 represents random guessing.",
                 "difficulty": "Intermediate"
             }
         ],
         "Advanced": [
             {
-                "question": "Explain XGBoost and how gradient boosting algorithm improves upon decision trees.",
-                "expected_answer": "Gradient boosting sequentially builds decision trees where each new tree fits the residual errors of the prior ensemble. XGBoost adds regularized objective functions, parallel column block structures, fast tree pruning, and built-in handling of missing values.",
+                "question": "Explain how Gradient Boosted Decision Trees (XGBoost/LightGBM) optimize predictive performance.",
+                "expected_answer": "Gradient boosting constructs decision trees sequentially, where each new tree is trained to predict the residual pseudo-errors of the preceding ensemble via gradient descent on a specified loss function. XGBoost adds L1/L2 regularization, weighted quantile sketch, and parallelized split finding.",
                 "difficulty": "Advanced"
             }
         ]
@@ -192,47 +167,32 @@ OFFLINE_QUESTION_BANK = {
     "Data Structures": {
         "Beginner": [
             {
-                "question": "What is the difference between an Array and a Linked List in memory?",
-                "expected_answer": "Arrays store elements in contiguous memory locations providing O(1) random index access but fixed sizing. Linked lists store nodes with pointers anywhere in memory, offering O(1) dynamic insertion/deletion but O(n) sequential access.",
+                "question": "What is the difference between an Array and a Linked List in memory allocation and time complexity?",
+                "expected_answer": "Arrays store elements in contiguous memory blocks allowing O(1) random index access but fixed capacity. Linked Lists store independent nodes with pointers anywhere in dynamic memory, offering O(1) insertion/deletion at known nodes but requiring O(n) sequential traversal.",
                 "difficulty": "Beginner"
             },
             {
                 "question": "What is a Stack vs Queue and what are their primary operations?",
-                "expected_answer": "A Stack follows Last-In-First-Out (LIFO) with push() and pop() operations. A Queue follows First-In-First-Out (FIFO) with enqueue() and dequeue() operations.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "What is a Binary Search Tree (BST) and what is its search time complexity?",
-                "expected_answer": "A BST is a node-based binary tree where left child nodes are smaller than parent node, and right child nodes are larger. Average search complexity is O(log n), degrading to O(n) if unbalanced.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "What is Big-O Notation and why do developers analyze worst-case time complexity?",
-                "expected_answer": "Big-O notation describes the upper bound limit of an algorithm's execution time or space requirement as input size n approaches infinity, ensuring scalable code selection.",
+                "expected_answer": "A Stack follows Last-In-First-Out (LIFO) order with push() and pop() operations. A Queue follows First-In-First-Out (FIFO) order with enqueue() and dequeue() operations.",
                 "difficulty": "Beginner"
             },
             {
                 "question": "What is a Hash Map and how does collision resolution work?",
-                "expected_answer": "A Hash Map uses a hash function to map keys to bucket array indices for O(1) key lookup. Collisions (different keys hashing to same index) are resolved using Chaining (linked lists in buckets) or Open Addressing (linear/quadratic probing).",
+                "expected_answer": "A Hash Map uses a hash function to map keys to bucket array indices for average O(1) lookups. Collisions (when different keys hash to the same bucket) are resolved using Chaining (linked lists/trees inside buckets) or Open Addressing (linear/quadratic probing).",
                 "difficulty": "Beginner"
             }
         ],
         "Intermediate": [
             {
-                "question": "Explain QuickSort vs MergeSort algorithm stability and memory complexity.",
-                "expected_answer": "MergeSort is a stable divide-and-conquer algorithm with O(n log n) guaranteed time and O(n) auxiliary space complexity. QuickSort is an unstable in-place algorithm with average O(n log n) time, O(log n) stack space, but O(n^2) worst case.",
-                "difficulty": "Intermediate"
-            },
-            {
-                "question": "What is a Heap (Priority Queue) and how does Heapify work?",
-                "expected_answer": "A Heap is a complete binary tree satisfying the Heap property (Min-Heap: parent <= children; Max-Heap: parent >= children). Heapify restructures an array into a valid heap in O(n) time, enabling O(log n) insertions and extractions.",
+                "question": "Explain QuickSort vs MergeSort in stability, space complexity, and worst-case time complexity.",
+                "expected_answer": "MergeSort is a stable divide-and-conquer algorithm with guaranteed O(n log n) time and O(n) auxiliary space complexity. QuickSort is an unstable in-place algorithm with average O(n log n) time and O(log n) stack space, but degrades to O(n^2) worst-case if pivots are poorly chosen.",
                 "difficulty": "Intermediate"
             }
         ],
         "Advanced": [
             {
-                "question": "Explain Red-Black Tree self-balancing rules and why it guarantees O(log n) height.",
-                "expected_answer": "Red-Black trees are self-balancing BSTs where nodes are colored red or black. Rules dictate root and leaves (NIL) are black, red nodes cannot have red children, and every path from node to descendant leaves has equal black height. This guarantees tree height is bounded by 2 * log(n + 1).",
+                "question": "Explain how Red-Black Trees maintain balance during insertion and deletion.",
+                "expected_answer": "Red-Black Trees are self-balancing Binary Search Trees where every node is colored red or black. Invariants enforce that root and leaves (NIL) are black, red nodes cannot have red children, and every path from node to leaves contains equal black height. Balancing is maintained via tree rotations and color recoloring in O(log n) time.",
                 "difficulty": "Advanced"
             }
         ]
@@ -240,42 +200,32 @@ OFFLINE_QUESTION_BANK = {
     "Database": {
         "Beginner": [
             {
-                "question": "What is the difference between SQL (Relational) and NoSQL (Non-Relational) databases?",
-                "expected_answer": "SQL databases (e.g. PostgreSQL, MySQL) are structured, table-based, use fixed schemas, and support ACID transactions. NoSQL databases (e.g. MongoDB, Redis) are document/key-value based, schema-less, and scale horizontally.",
+                "question": "What is the difference between Relational (SQL) and Non-Relational (NoSQL) databases?",
+                "expected_answer": "Relational databases (PostgreSQL, MySQL) store data in structured tables with predefined schemas and enforce ACID transactions. NoSQL databases (MongoDB, Redis, Cassandra) store unstructured/semi-structured data (documents, key-value, graphs) and scale horizontally.",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What are ACID properties in database transactions?",
-                "expected_answer": "ACID stands for Atomicity (all operations succeed or roll back), Consistency (data satisfies integrity constraints), Isolation (concurrent transactions do not interfere), and Durability (committed changes persist after system failure).",
+                "question": "What are ACID properties in Database Transaction Management?",
+                "expected_answer": "ACID stands for Atomicity (all operations complete or roll back), Consistency (data satisfies integrity constraints), Isolation (concurrent transactions do not interfere), and Durability (committed writes persist despite system failure).",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What is Database Indexing and how does it improve query speed?",
-                "expected_answer": "Database indexing creates data structures (typically B-Trees or Hash Indexes) on table columns to quickly pinpoint matching rows without scanning the entire table sequentially.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "What is Normalization and what is 3rd Normal Form (3NF)?",
-                "expected_answer": "Normalization organizes database columns and tables to minimize data redundancy. 3NF requires tables to be in 2NF and ensure all non-key columns depend solely on the primary key, eliminating transitive dependencies.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "Explain the difference between INNER JOIN, LEFT JOIN, and RIGHT JOIN.",
-                "expected_answer": "INNER JOIN returns matching rows present in both tables. LEFT JOIN returns all rows from the left table and matched rows from right table (with NULLs for unmatched). RIGHT JOIN returns all rows from the right table.",
+                "question": "What is Database Indexing and how does B-Tree indexing accelerate queries?",
+                "expected_answer": "Database indexing creates auxiliary data structures to quickly locate rows without full table scans. B-Trees maintain balanced search trees where leaf nodes store pointers to table rows, reducing lookup time complexity from O(n) to O(log n).",
                 "difficulty": "Beginner"
             }
         ],
         "Intermediate": [
             {
-                "question": "What is Database Sharding and Horizontal Partitioning?",
-                "expected_answer": "Database Sharding splits large tables horizontally across multiple server instances using a shard key, distributing computational load and storage capacity across clusters.",
+                "question": "What is Database Sharding and how does Horizontal Partitioning differ from Vertical Partitioning?",
+                "expected_answer": "Database Sharding partitions large datasets across independent server nodes using a shard key. Horizontal partitioning splits rows across nodes, while vertical partitioning splits columns into separate physical tables.",
                 "difficulty": "Intermediate"
             }
         ],
         "Advanced": [
             {
                 "question": "Explain Multi-Version Concurrency Control (MVCC) in PostgreSQL.",
-                "expected_answer": "MVCC provides concurrent database access by giving each transaction a snapshot of data at a point in time. Writes create new versions of rows instead of locking reads, preventing read-write contention.",
+                "expected_answer": "MVCC provides concurrent database access by maintaining multiple tuple versions for each row. Reads do not block writes and writes do not block reads; transactions operate on point-in-time consistent snapshots, with obsolete rows reclaimed by VACUUM processes.",
                 "difficulty": "Advanced"
             }
         ]
@@ -283,42 +233,27 @@ OFFLINE_QUESTION_BANK = {
     "HR": {
         "Beginner": [
             {
-                "question": "Tell me about yourself and your professional background.",
-                "expected_answer": "A concise professional introduction covering academic background, core technical skills, key projects completed, and career aspirations relevant to the target role.",
+                "question": "Tell me about your technical background, core domain expertise, and key project achievements.",
+                "expected_answer": "A structured introduction highlighting technical education, primary programming languages/frameworks, significant project impacts, and alignment with target role responsibilities.",
                 "difficulty": "Beginner"
             },
             {
-                "question": "What are your greatest professional strengths and one area you are actively working to improve?",
-                "expected_answer": "Highlight genuine technical/soft strengths (problem-solving, fast learning) with examples, and mention a real area for growth accompanied by concrete self-improvement actions.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "Why do you want to join our organization and work in this domain?",
-                "expected_answer": "Demonstrate knowledge of company domain/projects, alignment with work culture, and how this position fits long-term career development goals.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "Describe a time when you faced a difficult challenge or conflict in a team project and how you resolved it.",
-                "expected_answer": "Use the STAR method (Situation, Task, Action, Result) to detail constructive communication, active listening, problem analysis, and positive resolution.",
-                "difficulty": "Beginner"
-            },
-            {
-                "question": "Where do you see yourself in 3 to 5 years?",
-                "expected_answer": "Focus on skill mastery, taking on leadership or technical architectural ownership, contributing significantly to impact metrics, and continuous growth.",
+                "question": "Describe a scenario where you encountered technical conflict in a team project and how you arrived at a solution.",
+                "expected_answer": "Utilize the STAR method (Situation, Task, Action, Result) detailing objective data-driven discussion, active listening, architectural trade-off evaluation, and collaborative resolution.",
                 "difficulty": "Beginner"
             }
         ],
         "Intermediate": [
             {
-                "question": "How do you handle tight project deadlines or sudden changes in project scope?",
-                "expected_answer": "Explain prioritization frameworks (e.g. MoSCoW), clear stakeholder communication, breaking tasks down, and managing workload without compromising code quality.",
+                "question": "How do you manage tight project deadlines or unexpected shifts in technical requirements?",
+                "expected_answer": "Explain backlog prioritization, transparent communication with stakeholders, breaking features into MVP deliverables, and maintaining automated test coverage to avoid technical debt.",
                 "difficulty": "Intermediate"
             }
         ],
         "Advanced": [
             {
-                "question": "How do you handle constructive criticism or disagreement with a senior technical decision?",
-                "expected_answer": "Discuss respectful dialogue based on data and technical pros/cons, seeking to understand business context, and committing fully to team alignment once a consensus or leadership decision is made.",
+                "question": "How do you handle constructive architectural criticism from senior engineers?",
+                "expected_answer": "Emphasize receiving feedback professionally, evaluating alternative proposals objectively against data and benchmarks, and committing fully to team alignment once decisions are finalized.",
                 "difficulty": "Advanced"
             }
         ]
@@ -332,8 +267,8 @@ def generate_questions(
     resume_skills: List[str] = None
 ) -> List[Dict[str, Any]]:
     """
-    Generates dynamic interview questions using Gemini API if key is set,
-    or returns structured questions from the offline question bank in Demo Mode.
+    Generates highly accurate, domain-specific interview questions using Gemini 1.5 API
+    with strict prompts, or falls back to an enriched offline question repository.
     """
     if GEMINI_API_KEY:
         try:
@@ -341,19 +276,29 @@ def generate_questions(
             genai.configure(api_key=GEMINI_API_KEY)
             model = genai.GenerativeModel("gemini-1.5-flash")
 
-            skills_str = ", ".join(resume_skills) if resume_skills else "General core fundamentals"
+            skills_str = ", ".join(resume_skills) if resume_skills else "Core domain fundamentals"
 
             prompt = f"""
-            You are an expert technical interviewer for {domain}.
-            Generate exactly {num_questions} interview questions at '{difficulty}' difficulty.
-            Target skills: {skills_str}.
+            You are a Senior Principal Technical Interviewer evaluating candidates for a top-tier software company.
+            Domain: {domain}
+            Target Difficulty Level: {difficulty}
+            Target Candidate Skills: {skills_str}
+            Number of Questions Required: {num_questions}
 
-            Format your response strictly as valid JSON with no markdown wrapping or extra text outside the JSON:
+            Instructions for Question Generation:
+            1. Formulate exactly {num_questions} highly accurate, realistic, and non-repetitive technical questions.
+            2. Questions must match the target difficulty level:
+               - Beginner: Precise core principles, fundamental syntax, definitions, and standard use-cases.
+               - Intermediate: System design patterns, efficiency, Big-O time/space trade-offs, and error handling.
+               - Advanced: Internal mechanics, concurrency/locking, distributed systems, memory models, and scaling bottlenecks.
+            3. For each question, provide a comprehensive, authoritative "expected_answer" detailing key technical concepts, mechanics, and reference points.
+
+            Format your response STRICTLY as valid JSON without markdown fences or additional text outside the JSON:
             {{
                 "questions": [
                     {{
-                        "question": "Question text here",
-                        "expected_answer": "Detailed comprehensive expected answer here",
+                        "question": "Detailed technical question here",
+                        "expected_answer": "Comprehensive reference answer covering definitions, mechanics, and trade-offs.",
                         "difficulty": "{difficulty}"
                     }}
                 ]
@@ -362,7 +307,6 @@ def generate_questions(
 
             response = model.generate_content(prompt)
             clean_text = response.text.strip()
-            # Clean possible markdown block markers ```json ... ```
             if clean_text.startswith("```"):
                 clean_text = clean_text.split("```")[1]
                 if clean_text.startswith("json"):
@@ -373,26 +317,23 @@ def generate_questions(
             if "questions" in parsed and isinstance(parsed["questions"], list) and len(parsed["questions"]) > 0:
                 return parsed["questions"][:num_questions]
         except Exception as e:
-            print(f"Gemini API Question Generation failed: {e}. Falling back to Demo Mode question generator.")
+            print(f"Gemini API Question Generation notice: {e}. Utilizing enriched offline question repository.")
 
-    # Demo Mode / Fallback Generator
-    domain_questions = OFFLINE_QUESTION_BANK.get(domain, OFFLINE_QUESTION_BANK["Software Development"])
-    diff_questions = domain_questions.get(difficulty, domain_questions.get("Beginner", []))
+    # Enriched Offline Demo Mode Fallback
+    domain_bank = OFFLINE_QUESTION_BANK.get(domain, OFFLINE_QUESTION_BANK["Software Development"])
+    diff_questions = domain_bank.get(difficulty, domain_bank.get("Beginner", []))
 
-    # If domain doesn't have enough questions for difficulty, combine all difficulties in that domain
     if len(diff_questions) < num_questions:
         all_in_domain = []
-        for diff_level in ["Beginner", "Intermediate", "Advanced"]:
-            all_in_domain.extend(domain_questions.get(diff_level, []))
+        for d_level in ["Beginner", "Intermediate", "Advanced"]:
+            all_in_domain.extend(domain_bank.get(d_level, []))
         diff_questions = all_in_domain
 
-    # If resume skills exist, prioritize questions touching those skills
     selected = random.sample(diff_questions, min(num_questions, len(diff_questions)))
-    
-    # Duplicate or expand with dynamically formatted questions if requested count exceeds fixed bank
+
     while len(selected) < num_questions:
         base = random.choice(diff_questions)
-        skill_suffix = f" in relation to {random.choice(resume_skills)}" if resume_skills else ""
+        skill_suffix = f" with practical application to {random.choice(resume_skills)}" if resume_skills else ""
         selected.append({
             "question": f"{base['question'][:-1]}{skill_suffix}?",
             "expected_answer": base["expected_answer"],
