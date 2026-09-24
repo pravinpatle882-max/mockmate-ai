@@ -94,6 +94,12 @@ class ApiService {
     });
   }
 
+  async loadSampleResume() {
+    return await this.request("/resume/sample", {
+      method: "POST"
+    });
+  }
+
   async getCurrentResume() {
     return await this.request("/resume/current");
   }
@@ -142,7 +148,6 @@ class ApiService {
   }
 
   getPdfUrl(interview_id) {
-    const token = this.getToken();
     return `${API_BASE_URL}/interview/${interview_id}/pdf`;
   }
 }

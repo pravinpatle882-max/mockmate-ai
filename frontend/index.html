@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MockMate Office - Corporate Candidate Evaluation & Employee Assessment Platform</title>
+  <title>MockMate Office - Corporate Candidate Evaluation Platform</title>
   
   <!-- Website Favicon Logo -->
   <link rel="icon" type="image/png" href="/src/assets/logo.png">
@@ -484,6 +484,20 @@
         }
       };
 
+      const handleLoadSampleResume = async () => {
+        setUploading(true);
+        setUploadMsg('');
+        try {
+          const res = await window.api.loadSampleResume();
+          setUploadMsg(`Loaded sample senior developer profile. Extracted ${res.extracted_skills.length} skills.`);
+          loadDashboard();
+        } catch (err) {
+          setUploadMsg(`Sample load failed: ${err.message}`);
+        } finally {
+          setUploading(false);
+        }
+      };
+
       if (loading) {
         return (
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '240px', flexDirection: 'column', gap: '12px'}}>
@@ -544,10 +558,16 @@
                   Upload candidate PDF resume to generate skill-targeted technical questions matching candidate background.
                 </p>
                 
-                <label className="btn btn-secondary btn-sm" style={{cursor: 'pointer', marginBottom: '10px'}}>
-                  <IconFileText /> {uploading ? 'Parsing PDF...' : 'Upload PDF Resume'}
-                  <input type="file" accept=".pdf" style={{display: 'none'}} onChange={handleFileUpload} disabled={uploading} />
-                </label>
+                <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '10px'}}>
+                  <label className="btn btn-secondary btn-sm" style={{cursor: 'pointer'}}>
+                    <IconFileText /> {uploading ? 'Parsing PDF...' : 'Upload PDF Resume'}
+                    <input type="file" accept=".pdf" style={{display: 'none'}} onChange={handleFileUpload} disabled={uploading} />
+                  </label>
+
+                  <button className="btn btn-outline btn-sm" onClick={handleLoadSampleResume} disabled={uploading}>
+                    ⚡ Load Sample Developer Profile
+                  </button>
+                </div>
 
                 {data.extracted_skills.length > 0 && (
                   <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '6px'}}>
@@ -685,11 +705,11 @@
       };
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '600px', margin: '16px auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '620px', margin: '16px auto'}}>
           <div className="card">
             <h2 style={{fontSize: '1.4rem', fontWeight: '800', marginBottom: '4px'}}>Configure Assessment Setup</h2>
             <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '18px'}}>
-              Customize interview domain, difficulty level, and response format
+              Customize interview domain, difficulty level, and question count
             </p>
 
             <div className="form-group">
@@ -728,13 +748,13 @@
 
             <div className="form-group">
               <label>Number of Questions</label>
-              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px'}}>
-                {[5, 10, 15].map(cnt => (
+              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '8px'}}>
+                {[3, 5, 10, 15].map(cnt => (
                   <div
                     key={cnt}
                     className="card card-hover"
                     style={{
-                      padding: '10px 6px',
+                      padding: '10px 4px',
                       textAlign: 'center',
                       cursor: 'pointer',
                       borderColor: numQuestions === cnt ? 'var(--primary)' : 'var(--border-muted)',
@@ -742,7 +762,10 @@
                     }}
                     onClick={() => setNumQuestions(cnt)}
                   >
-                    <div style={{fontWeight: '700', fontSize: '0.825rem'}}>{cnt} Questions</div>
+                    <div style={{fontWeight: '700', fontSize: '0.825rem'}}>{cnt} Qs</div>
+                    <div style={{fontSize: '0.7rem', color: 'var(--text-muted)'}}>
+                      {cnt === 3 ? 'Quick' : cnt === 5 ? 'Standard' : cnt === 10 ? 'Full' : 'In-Depth'}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -799,7 +822,7 @@
             </div>
 
             <button className="btn btn-primary" style={{width: '100%', padding: '12px'}} onClick={handleCreate} disabled={loading}>
-              {loading ? 'Generating Assessment Questions...' : 'Generate & Start Interview'}
+              {loading ? 'Generating Assessment Questions...' : `Generate & Start ${numQuestions}-Question Assessment`}
             </button>
           </div>
         </div>

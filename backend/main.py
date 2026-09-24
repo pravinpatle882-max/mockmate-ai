@@ -31,8 +31,8 @@ load_dotenv()
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="MockMate AI - Intelligent Interview Preparation & Performance Evaluation",
-    description="Intelligent AI Interviewer with Gemini, Semantic Evaluation & Analytics",
+    title="MockMate Office - Corporate Candidate Evaluation Platform",
+    description="Intelligent AI Interviewer with Gemini, Semantic Vector Evaluation & Analytics",
     version="1.0.0"
 )
 
@@ -145,6 +145,41 @@ async def upload_resume(
         "filename": resume_obj.filename,
         "extracted_skills": skills,
         "message": "Resume processed successfully"
+    }
+
+@app.post("/resume/sample")
+def load_sample_resume(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    sample_skills = ["Python", "FastAPI", "React", "PostgreSQL", "System Architecture", "Docker", "Machine Learning", "Data Structures"]
+    sample_text = "Sample Senior Developer & AI Engineer Resume Profile. Skilled in Python, FastAPI, React, PostgreSQL, System Architecture, Docker, Machine Learning, and Data Structures."
+
+    existing_resume = db.query(Resume).filter(Resume.user_id == current_user.id).first()
+    if existing_resume:
+        existing_resume.filename = "Senior_Developer_Sample_Resume.pdf"
+        existing_resume.extracted_text = sample_text
+        existing_resume.extracted_skills = json.dumps(sample_skills)
+        db.commit()
+        db.refresh(existing_resume)
+        resume_obj = existing_resume
+    else:
+        new_resume = Resume(
+            user_id=current_user.id,
+            filename="Senior_Developer_Sample_Resume.pdf",
+            extracted_text=sample_text,
+            extracted_skills=json.dumps(sample_skills)
+        )
+        db.add(new_resume)
+        db.commit()
+        db.refresh(new_resume)
+        resume_obj = new_resume
+
+    return {
+        "id": resume_obj.id,
+        "filename": resume_obj.filename,
+        "extracted_skills": sample_skills,
+        "message": "Sample candidate resume loaded successfully"
     }
 
 @app.get("/resume/current")
@@ -579,7 +614,7 @@ def read_root():
     index_path = os.path.join(FRONTEND_DIR, "index.html")
     if os.path.exists(index_path):
         return FileResponse(index_path)
-    return {"message": "MockMate AI System API is running successfully!"}
+    return {"message": "MockMate Office API is running successfully!"}
 
 @app.get("/{full_path:path}")
 def serve_frontend_or_404(full_path: str):
