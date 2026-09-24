@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MockMate Office - Corporate Candidate Evaluation Platform</title>
+  <title>MockMate Office - Candidate Evaluation Suite</title>
   
   <!-- Website Favicon Logo -->
   <link rel="icon" type="image/png" href="/src/assets/logo.png">
@@ -66,6 +66,9 @@
     const IconMenu = () => (
       <svg className="svg-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     );
+    const IconZap = () => (
+      <svg className="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+    );
 
     // --- NAVIGATION BAR ---
     function Navbar({ currentPage, navigate, user, onLogout }) {
@@ -80,7 +83,7 @@
         <nav className="navbar">
           <div className="brand" onClick={() => handleNavClick('home')} style={{cursor: 'pointer'}}>
             <img src="/src/assets/logo.png" alt="MockMate Office Logo" className="brand-logo-img" />
-            <span>MockMate Office</span>
+            <span>MockMate AI</span>
           </div>
 
           <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
@@ -89,19 +92,19 @@
 
           <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <span className={`nav-item ${currentPage === 'home' ? 'active' : ''}`} onClick={() => handleNavClick('home')}>
-              Corporate Suite
+              Home
             </span>
 
             {user ? (
               <>
                 <span className={`nav-item ${currentPage === 'dashboard' ? 'active' : ''}`} onClick={() => handleNavClick('dashboard')}>
-                  Employee Dashboard
+                  Dashboard
                 </span>
                 <span className={`nav-item ${currentPage === 'setup' ? 'active' : ''}`} onClick={() => handleNavClick('setup')}>
-                  Start Assessment
+                  Start Test
                 </span>
                 <span className={`nav-item ${currentPage === 'history' ? 'active' : ''}`} onClick={() => handleNavClick('history')}>
-                  Archives
+                  History
                 </span>
                 <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginLeft: '8px', flexWrap: 'wrap'}}>
                   <span className="badge badge-indigo">
@@ -116,7 +119,7 @@
                   Sign In
                 </span>
                 <button className="btn btn-primary btn-sm" onClick={() => handleNavClick('register')}>
-                  Register Candidate
+                  Register
                 </button>
               </>
             )}
@@ -125,116 +128,103 @@
       );
     }
 
-    // --- HOME PAGE ---
+    // --- HOME PAGE (Ultra-Clean, Zero Paragraphs) ---
     function HomePage({ navigate, user }) {
       return (
         <div className="animate-fade-in">
           {/* Main Hero Header */}
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '28px', alignItems: 'center', padding: '16px 0 28px'}}>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'center', padding: '12px 0 24px'}}>
             <div>
-              <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px'}}>
+              <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', flexWrap: 'wrap'}}>
                 <span className="badge badge-indigo">
-                  <IconOffice /> Corporate Candidate Evaluation Platform
+                  <IconOffice /> AI Candidate Evaluation Suite
                 </span>
                 <span className="badge badge-emerald">
-                  <span className="pulse-dot"></span> Office Engine Active
+                  <span className="pulse-dot"></span> Live Ready
                 </span>
               </div>
 
-              <h1 style={{fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', letterSpacing: '-0.5px', marginBottom: '14px', color: 'var(--text-main)'}}>
-                Master Technical Interviews with MockMate Office
+              <h1 style={{fontSize: '2.5rem', fontWeight: '900', lineHeight: '1.15', letterSpacing: '-0.5px', marginBottom: '16px', color: 'var(--text-main)'}}>
+                AI Mock Interview Platform
               </h1>
 
-              <p style={{fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: '1.6'}}>
-                Practice domain-tailored employee assessments across Software Engineering, AI Systems, Data Science, and Technical Management. Receive multi-factor evaluation scores, semantic feedback, and downloadable PDF performance certificates.
-              </p>
+              {/* Action Chip Summary */}
+              <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px'}}>
+                <span className="badge badge-slate"><IconZap /> Gemini 1.5 AI</span>
+                <span className="badge badge-slate"><IconMic /> Voice & Text Input</span>
+                <span className="badge badge-slate"><IconChart /> Vector Similarity</span>
+                <span className="badge badge-slate"><IconDownload /> PDF Certificates</span>
+              </div>
 
               <div className="btn-stack-mobile" style={{display: 'flex', gap: '12px', flexWrap: 'wrap'}}>
-                <button className="btn btn-primary" style={{padding: '12px 24px'}} onClick={() => navigate(user ? 'setup' : 'login')}>
-                  <IconBriefcase /> Start Candidate Assessment
+                <button className="btn btn-primary" style={{padding: '12px 28px', fontSize: '0.95rem'}} onClick={() => navigate(user ? 'setup' : 'login')}>
+                  <IconBriefcase /> Start Assessment
                 </button>
-                <button className="btn btn-secondary" style={{padding: '12px 24px'}} onClick={() => navigate(user ? 'dashboard' : 'register')}>
-                  <IconUsers /> Employee Dashboard
+                <button className="btn btn-secondary" style={{padding: '12px 24px', fontSize: '0.95rem'}} onClick={() => navigate(user ? 'dashboard' : 'register')}>
+                  <IconUsers /> View Dashboard
                 </button>
               </div>
             </div>
 
-            {/* Generated Office Illustration */}
             <div>
-              <img src="/src/assets/hero.jpg" alt="Corporate Office Workstation" className="img-card" style={{maxHeight: '280px'}} />
+              <img src="/src/assets/hero.jpg" alt="Corporate Office Workstation" className="img-card" style={{maxHeight: '260px'}} />
             </div>
           </div>
 
-          {/* System Overview Grid */}
-          <div style={{marginTop: '20px'}}>
-            <h3 style={{fontSize: '1.2rem', fontWeight: '700', marginBottom: '16px', color: 'var(--text-main)'}}>
-              Corporate Office Capabilities
-            </h3>
-
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px'}}>
-              <div className="card card-hover">
-                <div style={{color: 'var(--primary)', marginBottom: '10px'}}><IconOffice /></div>
-                <h4 style={{fontSize: '1rem', fontWeight: '700', marginBottom: '6px'}}>Dynamic AI Questioning</h4>
-                <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                  Questions are generated dynamically based on selected difficulty, domain, and candidate skills extracted from uploaded PDF resumes.
-                </p>
+          {/* Quick Feature Cards (Short Crisp Headers Only) */}
+          <div style={{marginTop: '16px'}}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px'}}>
+              <div className="card card-hover" style={{padding: '16px'}}>
+                <div style={{color: 'var(--primary)', marginBottom: '8px'}}><IconOffice /></div>
+                <h4 style={{fontSize: '0.95rem', fontWeight: '800'}}>Dynamic AI Questions</h4>
+                <div className="badge badge-indigo" style={{marginTop: '6px'}}>Software / AI / Data / SQL</div>
               </div>
 
-              <div className="card card-hover">
-                <div style={{color: 'var(--cyan-office)', marginBottom: '10px'}}><IconMic /></div>
-                <h4 style={{fontSize: '1rem', fontWeight: '700', marginBottom: '6px'}}>Voice & Text Response Modes</h4>
-                <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                  Support both typed text answers and spoken verbal responses with real-time speech-to-text transcription preview.
-                </p>
+              <div className="card card-hover" style={{padding: '16px'}}>
+                <div style={{color: 'var(--cyan-office)', marginBottom: '8px'}}><IconMic /></div>
+                <h4 style={{fontSize: '0.95rem', fontWeight: '800'}}>Voice & Speech-to-Text</h4>
+                <div className="badge badge-slate" style={{marginTop: '6px'}}>Microphone Input</div>
               </div>
 
-              <div className="card card-hover">
-                <div style={{color: 'var(--emerald-office)', marginBottom: '10px'}}><IconChart /></div>
-                <h4 style={{fontSize: '1rem', fontWeight: '700', marginBottom: '6px'}}>Semantic Vector Evaluation</h4>
-                <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                  Evaluates answers using Sentence Transformer vector embeddings and multi-factor scoring (Technical, Accuracy, Relevance, Grammar, Communication).
-                </p>
+              <div className="card card-hover" style={{padding: '16px'}}>
+                <div style={{color: 'var(--emerald-office)', marginBottom: '8px'}}><IconChart /></div>
+                <h4 style={{fontSize: '0.95rem', fontWeight: '800'}}>5-Axis Evaluation</h4>
+                <div className="badge badge-emerald" style={{marginTop: '6px'}}>Vector Embeddings</div>
               </div>
 
-              <div className="card card-hover">
-                <div style={{color: 'var(--amber-office)', marginBottom: '10px'}}><IconFileText /></div>
-                <h4 style={{fontSize: '1rem', fontWeight: '700', marginBottom: '6px'}}>Resume Skill Parser</h4>
-                <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                  Parses PDF resumes to extract candidate technical skill profiles (Python, React, SQL, AWS, DSA) for targeted questioning.
-                </p>
+              <div className="card card-hover" style={{padding: '16px'}}>
+                <div style={{color: 'var(--amber-office)', marginBottom: '8px'}}><IconFileText /></div>
+                <h4 style={{fontSize: '0.95rem', fontWeight: '800'}}>PDF Report Certificates</h4>
+                <div className="badge badge-slate" style={{marginTop: '6px'}}>Instant Export</div>
               </div>
             </div>
           </div>
 
-          {/* Workflow Sequence */}
-          <div className="card" style={{marginTop: '28px', padding: '24px'}}>
-            <h3 style={{fontSize: '1.1rem', fontWeight: '700', marginBottom: '20px', textAlign: 'center', color: 'var(--text-main)'}}>
-              Employee Assessment Process Flow
+          {/* 4-Step Quick Flow Banner */}
+          <div className="card" style={{marginTop: '20px', padding: '20px'}}>
+            <h3 style={{fontSize: '1rem', fontWeight: '800', marginBottom: '16px', textAlign: 'center', color: 'var(--text-main)'}}>
+              4-Step Candidate Workflow
             </h3>
             
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px'}}>
-              <div style={{textAlign: 'center'}}>
-                <div className="badge badge-slate" style={{marginBottom: '8px', fontSize: '0.8rem'}}>Step 01</div>
-                <h5 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '4px'}}>Configure Setup</h5>
-                <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Select domain, difficulty level, and response format.</p>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px'}}>
+              <div style={{textAlign: 'center', background: '#0f172a', padding: '12px', borderRadius: '8px', border: '1px solid var(--border-subtle)'}}>
+                <div className="badge badge-slate" style={{marginBottom: '6px'}}>01</div>
+                <h5 style={{fontSize: '0.85rem', fontWeight: '700'}}>Setup Test</h5>
               </div>
 
-              <div style={{textAlign: 'center'}}>
-                <div className="badge badge-slate" style={{marginBottom: '8px', fontSize: '0.8rem'}}>Step 02</div>
-                <h5 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '4px'}}>Answer Questions</h5>
-                <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Submit typed or voice answers under timed interview conditions.</p>
+              <div style={{textAlign: 'center', background: '#0f172a', padding: '12px', borderRadius: '8px', border: '1px solid var(--border-subtle)'}}>
+                <div className="badge badge-slate" style={{marginBottom: '6px'}}>02</div>
+                <h5 style={{fontSize: '0.85rem', fontWeight: '700'}}>Submit Answers</h5>
               </div>
 
-              <div style={{textAlign: 'center'}}>
-                <div className="badge badge-slate" style={{marginBottom: '8px', fontSize: '0.8rem'}}>Step 03</div>
-                <h5 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '4px'}}>AI Evaluation</h5>
-                <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Semantic transformer analysis rates technical depth & accuracy.</p>
+              <div style={{textAlign: 'center', background: '#0f172a', padding: '12px', borderRadius: '8px', border: '1px solid var(--border-subtle)'}}>
+                <div className="badge badge-slate" style={{marginBottom: '6px'}}>03</div>
+                <h5 style={{fontSize: '0.85rem', fontWeight: '700'}}>AI Scoring</h5>
               </div>
 
-              <div style={{textAlign: 'center'}}>
-                <div className="badge badge-slate" style={{marginBottom: '8px', fontSize: '0.8rem'}}>Step 04</div>
-                <h5 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '4px'}}>Download Report</h5>
-                <p style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Review competency breakdown and export official PDF certificate.</p>
+              <div style={{textAlign: 'center', background: '#0f172a', padding: '12px', borderRadius: '8px', border: '1px solid var(--border-subtle)'}}>
+                <div className="badge badge-slate" style={{marginBottom: '6px'}}>04</div>
+                <h5 style={{fontSize: '0.85rem', fontWeight: '700'}}>Export PDF</h5>
               </div>
             </div>
           </div>
@@ -258,7 +248,7 @@
           onLoginSuccess();
           navigate('dashboard');
         } catch (err) {
-          setError(err.message || 'Invalid email or password');
+          setError(err.message || 'Invalid credentials');
         } finally {
           setLoading(false);
         }
@@ -283,18 +273,15 @@
       };
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '390px', margin: '30px auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '380px', margin: '30px auto'}}>
           <div className="card">
-            <div style={{textAlign: 'center', marginBottom: '14px'}}>
-              <img src="/src/assets/logo.png" alt="MockMate Office Logo" style={{width: '52px', height: '52px', borderRadius: '10px'}} />
+            <div style={{textAlign: 'center', marginBottom: '12px'}}>
+              <img src="/src/assets/logo.png" alt="MockMate Office Logo" style={{width: '48px', height: '48px', borderRadius: '8px'}} />
             </div>
-            <h2 style={{fontSize: '1.4rem', fontWeight: '800', marginBottom: '4px', textAlign: 'center'}}>Candidate Sign In</h2>
-            <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem', textAlign: 'center', marginBottom: '18px'}}>
-              Sign in to MockMate Office to manage candidate assessments
-            </p>
+            <h2 style={{fontSize: '1.3rem', fontWeight: '800', textAlign: 'center', marginBottom: '16px'}}>Candidate Sign In</h2>
 
             {error && (
-              <div style={{padding: '10px', background: 'var(--rose-bg)', border: '1px solid rgba(244,63,94,0.3)', color: '#fca5a5', borderRadius: '6px', fontSize: '0.85rem', marginBottom: '14px'}}>
+              <div style={{padding: '8px 10px', background: 'var(--rose-bg)', border: '1px solid rgba(244,63,94,0.3)', color: '#fca5a5', borderRadius: '6px', fontSize: '0.8rem', marginBottom: '12px'}}>
                 {error}
               </div>
             )}
@@ -310,17 +297,17 @@
                 <input type="password" className="form-input" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} required />
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '6px'}} disabled={loading}>
-                {loading ? 'Authenticating...' : 'Sign In'}
+              <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '4px'}} disabled={loading}>
+                {loading ? 'Signing in...' : 'Sign In'}
               </button>
 
-              <button type="button" className="btn btn-secondary" style={{width: '100%', marginTop: '10px'}} onClick={handleDemoLogin} disabled={loading}>
-                Quick Demo User Sign In
+              <button type="button" className="btn btn-secondary" style={{width: '100%', marginTop: '8px'}} onClick={handleDemoLogin} disabled={loading}>
+                ⚡ 1-Click Demo Sign In
               </button>
             </form>
 
-            <div style={{textAlign: 'center', marginTop: '16px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
-              Don't have an account? <span style={{color: '#818cf8', cursor: 'pointer', fontWeight: '600'}} onClick={() => navigate('register')}>Register</span>
+            <div style={{textAlign: 'center', marginTop: '14px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
+              New user? <span style={{color: '#818cf8', cursor: 'pointer', fontWeight: '600'}} onClick={() => navigate('register')}>Register</span>
             </div>
           </div>
         </div>
@@ -356,18 +343,15 @@
       };
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '410px', margin: '30px auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '390px', margin: '30px auto'}}>
           <div className="card">
-            <div style={{textAlign: 'center', marginBottom: '14px'}}>
-              <img src="/src/assets/logo.png" alt="MockMate Office Logo" style={{width: '52px', height: '52px', borderRadius: '10px'}} />
+            <div style={{textAlign: 'center', marginBottom: '12px'}}>
+              <img src="/src/assets/logo.png" alt="MockMate Office Logo" style={{width: '48px', height: '48px', borderRadius: '8px'}} />
             </div>
-            <h2 style={{fontSize: '1.4rem', fontWeight: '800', marginBottom: '4px', textAlign: 'center'}}>Create Account</h2>
-            <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem', textAlign: 'center', marginBottom: '18px'}}>
-              Register a new account on MockMate Office
-            </p>
+            <h2 style={{fontSize: '1.3rem', fontWeight: '800', textAlign: 'center', marginBottom: '16px'}}>Register Candidate</h2>
 
             {error && (
-              <div style={{padding: '10px', background: 'var(--rose-bg)', border: '1px solid rgba(244,63,94,0.3)', color: '#fca5a5', borderRadius: '6px', fontSize: '0.85rem', marginBottom: '14px'}}>
+              <div style={{padding: '8px 10px', background: 'var(--rose-bg)', border: '1px solid rgba(244,63,94,0.3)', color: '#fca5a5', borderRadius: '6px', fontSize: '0.8rem', marginBottom: '12px'}}>
                 {error}
               </div>
             )}
@@ -393,13 +377,13 @@
                 <input type="password" className="form-input" placeholder="••••••••" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '6px'}} disabled={loading}>
-                {loading ? 'Registering...' : 'Register Account'}
+              <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '4px'}} disabled={loading}>
+                {loading ? 'Creating...' : 'Register Account'}
               </button>
             </form>
 
-            <div style={{textAlign: 'center', marginTop: '16px', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
-              Already have an account? <span style={{color: '#818cf8', cursor: 'pointer', fontWeight: '600'}} onClick={() => navigate('login')}>Sign In</span>
+            <div style={{textAlign: 'center', marginTop: '14px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
+              Have an account? <span style={{color: '#818cf8', cursor: 'pointer', fontWeight: '600'}} onClick={() => navigate('login')}>Sign In</span>
             </div>
           </div>
         </div>
@@ -442,7 +426,7 @@
             data: {
               labels: data.score_trends.map(t => t.date),
               datasets: [{
-                label: 'Assessment Overall Score (0-10)',
+                label: 'Score (0-10)',
                 data: data.score_trends.map(t => t.score),
                 borderColor: '#6366f1',
                 backgroundColor: 'rgba(99, 102, 241, 0.12)',
@@ -475,7 +459,7 @@
         setUploadMsg('');
         try {
           const res = await window.api.uploadResume(file);
-          setUploadMsg(`Parsed resume successfully. Extracted ${res.extracted_skills.length} technical skills.`);
+          setUploadMsg(`Parsed ${res.extracted_skills.length} skills.`);
           loadDashboard();
         } catch (err) {
           setUploadMsg(`Upload failed: ${err.message}`);
@@ -489,7 +473,7 @@
         setUploadMsg('');
         try {
           const res = await window.api.loadSampleResume();
-          setUploadMsg(`Loaded sample senior developer profile. Extracted ${res.extracted_skills.length} skills.`);
+          setUploadMsg(`Loaded sample developer skills.`);
           loadDashboard();
         } catch (err) {
           setUploadMsg(`Sample load failed: ${err.message}`);
@@ -500,130 +484,120 @@
 
       if (loading) {
         return (
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '240px', flexDirection: 'column', gap: '12px'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px', flexDirection: 'column', gap: '12px'}}>
             <div className="spinner-std"></div>
-            <div style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>Loading Employee Dashboard Data...</div>
+            <div style={{color: 'var(--text-muted)', fontSize: '0.85rem'}}>Loading Dashboard...</div>
           </div>
         );
       }
 
       return (
         <div className="animate-fade-in">
-          {/* Header */}
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '14px'}}>
-            <div>
-              <h1 style={{fontSize: '1.65rem', fontWeight: '800', letterSpacing: '-0.3px'}}>Employee Performance Dashboard</h1>
-              <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                Candidate interview readiness and historical evaluation insights
-              </p>
-            </div>
+          {/* Header Bar */}
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px'}}>
+            <h1 style={{fontSize: '1.5rem', fontWeight: '900'}}>Employee Dashboard</h1>
             <button className="btn btn-primary" onClick={() => navigate('setup')}>
               <IconBriefcase /> Start New Assessment
             </button>
           </div>
 
-          {/* Key Indicators Grid */}
-          <div className="kpi-grid">
+          {/* Key Metric Chips Grid */}
+          <div className="kpi-grid" style={{marginBottom: '16px'}}>
             <div className="kpi-card">
-              <div className="kpi-title">Total Assessments</div>
+              <div className="kpi-title">Assessments</div>
               <div className="kpi-value">{data.total_interviews}</div>
             </div>
 
             <div className="kpi-card">
               <div className="kpi-title">Average Score</div>
               <div className="kpi-value">
-                {data.average_score.toFixed(1)} <span style={{fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: '500'}}>/ 10</span>
+                {data.average_score.toFixed(1)} <span style={{fontSize: '0.85rem', color: 'var(--text-muted)'}}>/ 10</span>
               </div>
             </div>
 
             <div className="kpi-card">
               <div className="kpi-title">Best Score</div>
               <div className="kpi-value" style={{color: '#6ee7b7'}}>
-                {data.best_score.toFixed(1)} <span style={{fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: '500'}}>/ 10</span>
+                {data.best_score.toFixed(1)} <span style={{fontSize: '0.85rem', color: 'var(--text-muted)'}}>/ 10</span>
               </div>
             </div>
 
             <div className="kpi-card">
-              <div className="kpi-title">Extracted Skills</div>
+              <div className="kpi-title">Skills Extracted</div>
               <div className="kpi-value">{data.extracted_skills.length}</div>
             </div>
           </div>
 
-          {/* Resume Banner with Office Illustration */}
-          <div className="card" style={{marginBottom: '20px'}}>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', alignItems: 'center'}}>
+          {/* Resume Profile Banner */}
+          <div className="card" style={{marginBottom: '16px', padding: '16px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px'}}>
               <div>
-                <h4 style={{fontSize: '0.95rem', fontWeight: '700', marginBottom: '4px'}}>Resume Profile Customization</h4>
-                <p style={{color: 'var(--text-secondary)', fontSize: '0.825rem', marginBottom: '10px'}}>
-                  Upload candidate PDF resume to generate skill-targeted technical questions matching candidate background.
-                </p>
+                <h4 style={{fontSize: '0.9rem', fontWeight: '800', marginBottom: '8px'}}>Candidate Skill Profile</h4>
                 
-                <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '10px'}}>
+                <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center'}}>
                   <label className="btn btn-secondary btn-sm" style={{cursor: 'pointer'}}>
-                    <IconFileText /> {uploading ? 'Parsing PDF...' : 'Upload PDF Resume'}
+                    <IconFileText /> {uploading ? 'Parsing...' : 'Upload PDF'}
                     <input type="file" accept=".pdf" style={{display: 'none'}} onChange={handleFileUpload} disabled={uploading} />
                   </label>
 
                   <button className="btn btn-outline btn-sm" onClick={handleLoadSampleResume} disabled={uploading}>
-                    ⚡ Load Sample Developer Profile
+                    ⚡ Load Sample Profile
                   </button>
                 </div>
 
                 {data.extracted_skills.length > 0 && (
-                  <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '6px'}}>
+                  <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '10px'}}>
                     {data.extracted_skills.map((skill, idx) => (
                       <span key={idx} className="badge badge-indigo">{skill}</span>
                     ))}
                   </div>
                 )}
-                {uploadMsg && <div style={{fontSize: '0.8rem', color: '#6ee7b7', marginTop: '6px'}}>{uploadMsg}</div>}
+                {uploadMsg && <div style={{fontSize: '0.78rem', color: '#6ee7b7', marginTop: '6px'}}>{uploadMsg}</div>}
               </div>
 
-              <div>
-                <img src="/src/assets/resume.jpg" alt="Office Resume Desk" className="img-card" style={{maxHeight: '150px'}} />
-              </div>
+              <img src="/src/assets/resume.jpg" alt="Office Desk" className="img-card" style={{maxHeight: '110px', maxWidth: '180px'}} />
             </div>
           </div>
 
-          {/* Charts & Breakdown */}
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '20px'}}>
-            <div className="card">
-              <h4 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '14px'}}>Score Progress Trend</h4>
-              <div style={{height: '200px', position: 'relative'}}>
+          {/* Analytics Chart & Breakdown */}
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginBottom: '16px'}}>
+            <div className="card" style={{padding: '16px'}}>
+              <h4 style={{fontSize: '0.85rem', fontWeight: '800', marginBottom: '12px'}}>Score Progress Trend</h4>
+              <div style={{height: '180px', position: 'relative'}}>
                 {data.score_trends.length > 0 ? (
                   <canvas ref={chartRef}></canvas>
                 ) : (
-                  <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', color: 'var(--text-muted)', fontSize: '0.825rem'}}>
-                    No interview data recorded yet.
+                  <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', color: 'var(--text-muted)', fontSize: '0.8rem'}}>
+                    No interview data recorded.
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="card">
-              <h4 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '14px'}}>Competency Analysis</h4>
+            <div className="card" style={{padding: '16px'}}>
+              <h4 style={{fontSize: '0.85rem', fontWeight: '800', marginBottom: '12px'}}>Competency Overview</h4>
               
-              <div style={{marginBottom: '12px'}}>
-                <div style={{fontSize: '0.8rem', fontWeight: '700', color: '#6ee7b7', marginBottom: '4px'}}>Key Strengths</div>
-                <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                  {data.strong_areas.map((sa, i) => <li key={i} style={{marginBottom: '2px'}}>{sa}</li>)}
-                </ul>
+              <div style={{marginBottom: '10px'}}>
+                <div style={{fontSize: '0.78rem', fontWeight: '700', color: '#6ee7b7', marginBottom: '4px'}}>Strengths</div>
+                <div style={{display: 'flex', gap: '4px', flexWrap: 'wrap'}}>
+                  {data.strong_areas.map((sa, i) => <span key={i} className="badge badge-slate" style={{fontSize: '0.72rem'}}>{sa}</span>)}
+                </div>
               </div>
 
               <div>
-                <div style={{fontSize: '0.8rem', fontWeight: '700', color: '#fca5a5', marginBottom: '4px'}}>Target Improvement Areas</div>
-                <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                  {data.weak_areas.map((wa, i) => <li key={i} style={{marginBottom: '2px'}}>{wa}</li>)}
-                </ul>
+                <div style={{fontSize: '0.78rem', fontWeight: '700', color: '#fca5a5', marginBottom: '4px'}}>Growth Areas</div>
+                <div style={{display: 'flex', gap: '4px', flexWrap: 'wrap'}}>
+                  {data.weak_areas.map((wa, i) => <span key={i} className="badge badge-slate" style={{fontSize: '0.72rem'}}>{wa}</span>)}
+                </div>
               </div>
             </div>
           </div>
 
           {/* Recent History Table */}
-          <div className="card">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px'}}>
-              <h4 style={{fontSize: '0.95rem', fontWeight: '700'}}>Recent Assessment Sessions</h4>
-              <button className="btn btn-outline btn-sm" onClick={() => navigate('history')}>View Full History</button>
+          <div className="card" style={{padding: '16px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
+              <h4 style={{fontSize: '0.9rem', fontWeight: '800'}}>Recent Assessment Sessions</h4>
+              <button className="btn btn-outline btn-sm" onClick={() => navigate('history')}>Full History</button>
             </div>
 
             {data.recent_interviews.length > 0 ? (
@@ -633,7 +607,7 @@
                     <tr>
                       <th>Date</th>
                       <th>Domain</th>
-                      <th>Difficulty</th>
+                      <th>Level</th>
                       <th>Mode</th>
                       <th>Score</th>
                       <th>Action</th>
@@ -660,8 +634,8 @@
                 </table>
               </div>
             ) : (
-              <div style={{textAlign: 'center', padding: '16px', color: 'var(--text-muted)', fontSize: '0.85rem'}}>
-                No interview sessions recorded. Click "Start New Assessment" to begin.
+              <div style={{textAlign: 'center', padding: '14px', color: 'var(--text-muted)', fontSize: '0.8rem'}}>
+                No interview sessions recorded. Click "Start New Assessment".
               </div>
             )}
           </div>
@@ -698,19 +672,16 @@
           onStartInterview(result);
           navigate('interview');
         } catch (err) {
-          alert(`Error setting up interview: ${err.message}`);
+          alert(`Error: ${err.message}`);
         } finally {
           setLoading(false);
         }
       };
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '620px', margin: '16px auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '560px', margin: '12px auto'}}>
           <div className="card">
-            <h2 style={{fontSize: '1.4rem', fontWeight: '800', marginBottom: '4px'}}>Configure Assessment Setup</h2>
-            <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '18px'}}>
-              Customize interview domain, difficulty level, and question count
-            </p>
+            <h2 style={{fontSize: '1.3rem', fontWeight: '900', marginBottom: '14px'}}>Configure Assessment Setup</h2>
 
             <div className="form-group">
               <label>Technical Domain</label>
@@ -732,7 +703,7 @@
                     key={lvl}
                     className="card card-hover"
                     style={{
-                      padding: '10px 6px',
+                      padding: '8px 4px',
                       textAlign: 'center',
                       cursor: 'pointer',
                       borderColor: difficulty === lvl ? 'var(--primary)' : 'var(--border-muted)',
@@ -740,7 +711,7 @@
                     }}
                     onClick={() => setDifficulty(lvl)}
                   >
-                    <div style={{fontWeight: '700', fontSize: '0.825rem'}}>{lvl}</div>
+                    <div style={{fontWeight: '700', fontSize: '0.8rem'}}>{lvl}</div>
                   </div>
                 ))}
               </div>
@@ -754,7 +725,7 @@
                     key={cnt}
                     className="card card-hover"
                     style={{
-                      padding: '10px 4px',
+                      padding: '8px 4px',
                       textAlign: 'center',
                       cursor: 'pointer',
                       borderColor: numQuestions === cnt ? 'var(--primary)' : 'var(--border-muted)',
@@ -762,10 +733,7 @@
                     }}
                     onClick={() => setNumQuestions(cnt)}
                   >
-                    <div style={{fontWeight: '700', fontSize: '0.825rem'}}>{cnt} Qs</div>
-                    <div style={{fontSize: '0.7rem', color: 'var(--text-muted)'}}>
-                      {cnt === 3 ? 'Quick' : cnt === 5 ? 'Standard' : cnt === 10 ? 'Full' : 'In-Depth'}
-                    </div>
+                    <div style={{fontWeight: '700', fontSize: '0.8rem'}}>{cnt} Qs</div>
                   </div>
                 ))}
               </div>
@@ -777,7 +745,7 @@
                 <div
                   className="card card-hover"
                   style={{
-                    padding: '10px',
+                    padding: '8px',
                     textAlign: 'center',
                     cursor: 'pointer',
                     borderColor: mode === 'Text' ? 'var(--primary)' : 'var(--border-muted)',
@@ -785,14 +753,13 @@
                   }}
                   onClick={() => setMode('Text')}
                 >
-                  <div style={{fontWeight: '700', fontSize: '0.85rem'}}>Text Input</div>
-                  <div style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>Typed responses</div>
+                  <div style={{fontWeight: '700', fontSize: '0.8rem'}}>Text Mode</div>
                 </div>
 
                 <div
                   className="card card-hover"
                   style={{
-                    padding: '10px',
+                    padding: '8px',
                     textAlign: 'center',
                     cursor: 'pointer',
                     borderColor: mode === 'Voice' ? 'var(--primary)' : 'var(--border-muted)',
@@ -800,13 +767,12 @@
                   }}
                   onClick={() => setMode('Voice')}
                 >
-                  <div style={{fontWeight: '700', fontSize: '0.85rem'}}>Voice Recording</div>
-                  <div style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>Speech-to-text input</div>
+                  <div style={{fontWeight: '700', fontSize: '0.8rem'}}>Voice Mode</div>
                 </div>
               </div>
             </div>
 
-            <div style={{marginBottom: '18px'}}>
+            <div style={{marginBottom: '16px'}}>
               <label style={{display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer'}}>
                 <input
                   type="checkbox"
@@ -815,14 +781,14 @@
                   disabled={!hasResume}
                   style={{width: '16px', height: '16px'}}
                 />
-                <span style={{fontSize: '0.825rem', color: hasResume ? 'var(--text-main)' : 'var(--text-muted)'}}>
-                  Customize questions based on extracted PDF resume skills {hasResume ? '(Resume loaded)' : '(Upload resume in dashboard first)'}
+                <span style={{fontSize: '0.8rem', color: hasResume ? 'var(--text-main)' : 'var(--text-muted)'}}>
+                  Target PDF Resume Skills {hasResume ? '(Active)' : '(Upload resume in dashboard first)'}
                 </span>
               </label>
             </div>
 
-            <button className="btn btn-primary" style={{width: '100%', padding: '12px'}} onClick={handleCreate} disabled={loading}>
-              {loading ? 'Generating Assessment Questions...' : `Generate & Start ${numQuestions}-Question Assessment`}
+            <button className="btn btn-primary" style={{width: '100%', padding: '10px'}} onClick={handleCreate} disabled={loading}>
+              {loading ? 'Generating Questions...' : `Start ${numQuestions}-Question Assessment`}
             </button>
           </div>
         </div>
@@ -860,7 +826,7 @@
       const handleMicToggle = async () => {
         if (!isRecording) {
           setIsRecording(true);
-          setTranscriptionMsg('Recording audio... Speak clearly into your microphone.');
+          setTranscriptionMsg('Recording audio...');
           window.voiceService.startRecording(
             (transcript) => {
               setAnswerText(prev => (prev ? prev + ' ' + transcript : transcript));
@@ -872,17 +838,17 @@
           );
         } else {
           setIsRecording(false);
-          setTranscriptionMsg('Processing transcription...');
+          setTranscriptionMsg('Transcribing...');
           const audioBlob = await window.voiceService.stopRecording();
           if (audioBlob) {
             try {
               const res = await window.api.transcribeSpeech(audioBlob);
               if (res.text && res.text.trim()) {
                 setAnswerText(prev => (prev ? prev + '\n' + res.text : res.text));
-                setTranscriptionMsg('Transcription completed.');
+                setTranscriptionMsg('Transcribed.');
               }
             } catch (e) {
-              setTranscriptionMsg('Transcribed response.');
+              setTranscriptionMsg('Transcribed.');
             }
           }
         }
@@ -890,7 +856,7 @@
 
       const handleNextSubmit = async () => {
         if (!answerText.trim()) {
-          alert('Please provide an answer before submitting.');
+          alert('Please enter an answer before submitting.');
           return;
         }
 
@@ -922,8 +888,8 @@
       if (!interviewData || questions.length === 0) {
         return (
           <div style={{textAlign: 'center', padding: '60px'}}>
-            <h3>No active interview session found.</h3>
-            <button className="btn btn-primary" style={{marginTop: '12px'}} onClick={() => navigate('setup')}>Setup Session</button>
+            <h3>No active session.</h3>
+            <button className="btn btn-primary" style={{marginTop: '12px'}} onClick={() => navigate('setup')}>Setup Test</button>
           </div>
         );
       }
@@ -931,22 +897,22 @@
       const progressPct = ((currentIndex + 1) / questions.length) * 100;
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '780px', margin: '0 auto'}}>
-          {/* Header Track */}
-          <div className="card" style={{marginBottom: '14px', padding: '14px 16px'}}>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '8px'}}>
+        <div className="animate-fade-in" style={{maxWidth: '740px', margin: '0 auto'}}>
+          {/* Header Progress Track */}
+          <div className="card" style={{marginBottom: '12px', padding: '12px 14px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px', flexWrap: 'wrap', gap: '6px'}}>
               <div>
                 <span className="badge badge-indigo">{interviewData.domain}</span>
                 <span className="badge badge-slate" style={{marginLeft: '4px'}}>{interviewData.difficulty}</span>
                 <span className="badge badge-slate" style={{marginLeft: '4px'}}>{interviewData.mode}</span>
               </div>
 
-              <div style={{display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.825rem'}}>
+              <div style={{display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.8rem'}}>
                 <div style={{fontWeight: '700', color: timerSeconds < 30 ? '#f43f5e' : 'var(--text-main)'}}>
                   <IconClock /> {formatTime(timerSeconds)}
                 </div>
                 <div style={{color: 'var(--text-secondary)'}}>
-                  Question {currentIndex + 1} of {questions.length}
+                  Q{currentIndex + 1} / {questions.length}
                 </div>
               </div>
             </div>
@@ -959,54 +925,51 @@
           {/* Question Card */}
           <div className="card">
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px'}}>
-              <span style={{fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '700'}}>
+              <span style={{fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '700'}}>
                 QUESTION {currentIndex + 1} OF {questions.length}
               </span>
 
               <button
                 className="btn btn-outline btn-sm"
-                style={{padding: '4px 8px', fontSize: '0.75rem'}}
+                style={{padding: '3px 6px', fontSize: '0.72rem'}}
                 onClick={() => setShowHint(!showHint)}
               >
-                <IconHelp /> {showHint ? 'Hide Response Guide' : 'Response Structure Guide'}
+                <IconHelp /> {showHint ? 'Hide Structure' : 'Answer Structure'}
               </button>
             </div>
 
-            <h3 style={{fontSize: '1.2rem', fontWeight: '700', lineHeight: '1.4', marginBottom: '14px'}}>
+            <h3 style={{fontSize: '1.15rem', fontWeight: '800', lineHeight: '1.35', marginBottom: '12px'}}>
               {currentQuestion.question}
             </h3>
 
-            {/* Answer Structure Guide */}
+            {/* Answer Structure Chips */}
             {showHint && (
-              <div style={{padding: '10px 12px', background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '8px', marginBottom: '14px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                <b style={{color: '#a5b4fc'}}>💡 High-Scoring Technical Answer Structure:</b>
-                <ul style={{paddingLeft: '16px', marginTop: '4px'}}>
-                  <li>1. State clear definition/core concept directly.</li>
-                  <li>2. Explain key components, mechanics, or architectural trade-offs.</li>
-                  <li>3. Give a real-world scenario or technical code example.</li>
-                </ul>
+              <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '12px'}}>
+                <span className="badge badge-indigo">1. Core Definition</span>
+                <span className="badge badge-slate">2. Architecture / Trade-offs</span>
+                <span className="badge badge-emerald">3. Code Example</span>
               </div>
             )}
 
             <div className="form-group">
               <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px'}}>
-                <label>Candidate Answer</label>
-                <span style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>
+                <label>Answer Input</label>
+                <span style={{fontSize: '0.72rem', color: 'var(--text-muted)'}}>
                   {answerText.split(/\s+/).filter(Boolean).length} words
                 </span>
               </div>
 
               <textarea
                 className="form-textarea"
-                rows="7"
-                placeholder="Type your technical response here..."
+                rows="6"
+                placeholder="Type technical answer here..."
                 value={answerText}
                 onChange={e => setAnswerText(e.target.value)}
               />
             </div>
 
             {interviewData.mode === 'Voice' && (
-              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '14px 0'}}>
+              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', margin: '10px 0'}}>
                 <button className={`mic-btn-office ${isRecording ? 'recording' : ''}`} onClick={handleMicToggle}>
                   <IconMic />
                 </button>
@@ -1021,20 +984,20 @@
                   </div>
                 )}
 
-                <div style={{fontSize: '0.8rem', color: isRecording ? '#f43f5e' : 'var(--text-muted)'}}>
-                  {isRecording ? 'Recording audio... Click button to finish speech' : 'Click microphone button to record verbal answer'}
+                <div style={{fontSize: '0.75rem', color: isRecording ? '#f43f5e' : 'var(--text-muted)'}}>
+                  {isRecording ? 'Recording audio...' : 'Click mic to speak answer'}
                 </div>
                 {transcriptionMsg && (
-                  <div style={{fontSize: '0.8rem', color: '#67e8f9'}}>
+                  <div style={{fontSize: '0.75rem', color: '#67e8f9'}}>
                     {transcriptionMsg}
                   </div>
                 )}
               </div>
             )}
 
-            <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '14px'}}>
+            <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '12px'}}>
               <button className="btn btn-emerald" onClick={handleNextSubmit} disabled={submitting}>
-                {submitting ? 'Evaluating...' : (currentIndex + 1 < questions.length ? 'Submit Answer' : 'Finalize Assessment')}
+                {submitting ? 'Evaluating...' : (currentIndex + 1 < questions.length ? 'Next Question' : 'Complete Test')}
               </button>
             </div>
           </div>
@@ -1058,9 +1021,9 @@
 
       if (loading) {
         return (
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '240px', flexDirection: 'column', gap: '12px'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px', flexDirection: 'column', gap: '12px'}}>
             <div className="spinner-std"></div>
-            <div style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>Generating Evaluation Report...</div>
+            <div style={{color: 'var(--text-muted)', fontSize: '0.85rem'}}>Generating Report...</div>
           </div>
         );
       }
@@ -1075,76 +1038,78 @@
       }
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '860px', margin: '0 auto'}}>
+        <div className="animate-fade-in" style={{maxWidth: '820px', margin: '0 auto'}}>
           {/* Header Action Banner */}
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap', gap: '10px'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap', gap: '8px'}}>
             <div>
-              <h1 style={{fontSize: '1.65rem', fontWeight: '800'}}>Assessment Evaluation Report</h1>
-              <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>
-                Domain: <b>{result.domain}</b> | Difficulty: <b>{result.difficulty}</b> | Mode: <b>{result.mode}</b>
-              </p>
+              <h1 style={{fontSize: '1.5rem', fontWeight: '900'}}>Evaluation Report</h1>
+              <div style={{display: 'flex', gap: '6px', marginTop: '4px'}}>
+                <span className="badge badge-slate">{result.domain}</span>
+                <span className="badge badge-slate">{result.difficulty}</span>
+                <span className="badge badge-slate">{result.mode}</span>
+              </div>
             </div>
 
-            <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap'}}>
+            <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap'}}>
               <a href={window.api.getPdfUrl(result.id)} target="_blank" download className="btn btn-emerald btn-sm">
                 <IconDownload /> Download PDF Report
               </a>
-              <button className="btn btn-secondary btn-sm" onClick={() => navigate('setup')}>New Session</button>
+              <button className="btn btn-secondary btn-sm" onClick={() => navigate('setup')}>New Test</button>
               <button className="btn btn-primary btn-sm" onClick={() => navigate('dashboard')}>Dashboard</button>
             </div>
           </div>
 
           {/* Overall Score Circle & Dimension Bars */}
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginBottom: '18px'}}>
-            <div className="card" style={{textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '18px'}}>
-              <h4 style={{fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '12px'}}>Overall Score</h4>
-              <div className="score-badge-circle">
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginBottom: '14px'}}>
+            <div className="card" style={{textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '14px'}}>
+              <h4 style={{fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '8px'}}>Score</h4>
+              <div className="score-badge-circle" style={{margin: '0 auto'}}>
                 <span className="score-badge-val">{result.total_score.toFixed(1)}</span>
-                <span style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>/ 10</span>
+                <span style={{fontSize: '0.7rem', color: 'var(--text-muted)'}}>/ 10</span>
               </div>
-              <div style={{marginTop: '10px', fontSize: '0.825rem', fontWeight: '600', color: result.total_score >= 7 ? '#6ee7b7' : '#fcd34d'}}>
-                {result.total_score >= 8 ? 'Strong Qualification' : result.total_score >= 6 ? 'Competent Qualification' : 'Needs Technical Practice'}
+              <div style={{marginTop: '8px', fontSize: '0.8rem', fontWeight: '700', color: result.total_score >= 7 ? '#6ee7b7' : '#fcd34d'}}>
+                {result.total_score >= 8 ? 'Qualified' : result.total_score >= 6 ? 'Competent' : 'Needs Practice'}
               </div>
             </div>
 
-            <div className="card">
-              <h4 style={{fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '10px'}}>Evaluation Metric Breakdown</h4>
+            <div className="card" style={{padding: '14px'}}>
+              <h4 style={{fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '8px'}}>Dimension Breakdown</h4>
               
-              <div style={{marginBottom: '8px'}}>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
+              <div style={{marginBottom: '6px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '2px'}}>
                   <span>Technical Accuracy</span>
                   <span>{result.overall_technical.toFixed(1)} / 10</span>
                 </div>
                 <div className="progress-track"><div className="progress-fill" style={{width: `${(result.overall_technical/10)*100}%`}}></div></div>
               </div>
 
-              <div style={{marginBottom: '8px'}}>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
+              <div style={{marginBottom: '6px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '2px'}}>
                   <span>Factual Correctness</span>
                   <span>{result.overall_accuracy.toFixed(1)} / 10</span>
                 </div>
                 <div className="progress-track"><div className="progress-fill" style={{width: `${(result.overall_accuracy/10)*100}%`}}></div></div>
               </div>
 
-              <div style={{marginBottom: '8px'}}>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
+              <div style={{marginBottom: '6px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '2px'}}>
                   <span>Prompt Relevance</span>
                   <span>{result.overall_relevance.toFixed(1)} / 10</span>
                 </div>
                 <div className="progress-track"><div className="progress-fill" style={{width: `${(result.overall_relevance/10)*100}%`}}></div></div>
               </div>
 
-              <div style={{marginBottom: '8px'}}>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
-                  <span>Communication Clarity</span>
+              <div style={{marginBottom: '6px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '2px'}}>
+                  <span>Communication</span>
                   <span>{result.overall_communication.toFixed(1)} / 10</span>
                 </div>
                 <div className="progress-track"><div className="progress-fill" style={{width: `${(result.overall_communication/10)*100}%`}}></div></div>
               </div>
 
               <div>
-                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '2px'}}>
-                  <span>Language Grammar</span>
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '2px'}}>
+                  <span>Grammar</span>
                   <span>{result.overall_grammar.toFixed(1)} / 10</span>
                 </div>
                 <div className="progress-track"><div className="progress-fill" style={{width: `${(result.overall_grammar/10)*100}%`}}></div></div>
@@ -1152,53 +1117,53 @@
             </div>
           </div>
 
-          {/* Strengths & Weaknesses Grid */}
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginBottom: '18px'}}>
-            <div className="card" style={{borderLeft: '3px solid #10b981'}}>
-              <h4 style={{fontSize: '0.85rem', color: '#6ee7b7', marginBottom: '6px'}}>Candidate Strengths</h4>
-              <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                {result.strengths.map((s, i) => <li key={i} style={{marginBottom: '3px'}}>{s}</li>)}
-              </ul>
+          {/* Strengths & Weaknesses Badges */}
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginBottom: '14px'}}>
+            <div className="card" style={{padding: '14px', borderLeft: '3px solid #10b981'}}>
+              <h4 style={{fontSize: '0.8rem', color: '#6ee7b7', marginBottom: '6px'}}>Strengths</h4>
+              <div style={{display: 'flex', gap: '4px', flexWrap: 'wrap'}}>
+                {result.strengths.map((s, i) => <span key={i} className="badge badge-slate" style={{fontSize: '0.75rem'}}>{s}</span>)}
+              </div>
             </div>
 
-            <div className="card" style={{borderLeft: '3px solid #f43f5e'}}>
-              <h4 style={{fontSize: '0.85rem', color: '#fca5a5', marginBottom: '6px'}}>Areas for Growth</h4>
-              <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-                {result.weaknesses.map((w, i) => <li key={i} style={{marginBottom: '3px'}}>{w}</li>)}
-              </ul>
+            <div className="card" style={{padding: '14px', borderLeft: '3px solid #f43f5e'}}>
+              <h4 style={{fontSize: '0.8rem', color: '#fca5a5', marginBottom: '6px'}}>Growth Areas</h4>
+              <div style={{display: 'flex', gap: '4px', flexWrap: 'wrap'}}>
+                {result.weaknesses.map((w, i) => <span key={i} className="badge badge-slate" style={{fontSize: '0.75rem'}}>{w}</span>)}
+              </div>
             </div>
           </div>
 
-          {/* AI Recommendations */}
-          <div className="card" style={{marginBottom: '18px', borderLeft: '3px solid #06b6d4'}}>
-            <h4 style={{fontSize: '0.85rem', color: '#67e8f9', marginBottom: '6px'}}>MockMate Office Recommendations</h4>
-            <ul style={{paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)'}}>
-              {result.suggestions.map((sug, i) => <li key={i} style={{marginBottom: '4px'}}>{sug}</li>)}
-            </ul>
+          {/* Recommendations */}
+          <div className="card" style={{marginBottom: '14px', padding: '14px', borderLeft: '3px solid #06b6d4'}}>
+            <h4 style={{fontSize: '0.8rem', color: '#67e8f9', marginBottom: '6px'}}>Recommendations</h4>
+            <div style={{display: 'flex', gap: '4px', flexWrap: 'wrap'}}>
+              {result.suggestions.map((sug, i) => <span key={i} className="badge badge-slate" style={{fontSize: '0.75rem'}}>{sug}</span>)}
+            </div>
           </div>
 
           {/* Question Breakdown */}
-          <div className="card">
-            <h4 style={{fontSize: '0.9rem', fontWeight: '700', marginBottom: '12px'}}>Question Breakdown</h4>
+          <div className="card" style={{padding: '16px'}}>
+            <h4 style={{fontSize: '0.85rem', fontWeight: '800', marginBottom: '10px'}}>Question Breakdown</h4>
             {result.responses.map((resp, idx) => {
               const qObj = result.questions.find(q => q.id === resp.question_id) || {};
               return (
-                <div key={idx} style={{padding: '10px 12px', background: '#0f172a', borderRadius: '8px', marginBottom: '10px', border: '1px solid var(--border-subtle)'}}>
+                <div key={idx} style={{padding: '10px', background: '#0f172a', borderRadius: '6px', marginBottom: '8px', border: '1px solid var(--border-subtle)'}}>
                   <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px'}}>
-                    <h5 style={{fontSize: '0.85rem', fontWeight: '700'}}>Q{idx+1}: {qObj.question}</h5>
+                    <h5 style={{fontSize: '0.82rem', fontWeight: '700'}}>Q{idx+1}: {qObj.question}</h5>
                     <span className="badge badge-emerald">Score: {resp.overall} / 10</span>
                   </div>
 
-                  <div style={{fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '4px'}}>
-                    <b>Candidate Response:</b> "{resp.answer}"
+                  <div style={{fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '3px'}}>
+                    <b>Answer:</b> "{resp.answer}"
                   </div>
 
-                  <div style={{fontSize: '0.8rem', color: '#a5b4fc', marginBottom: '4px'}}>
-                    <b>Reference Answer:</b> "{qObj.expected_answer}"
+                  <div style={{fontSize: '0.78rem', color: '#a5b4fc', marginBottom: '3px'}}>
+                    <b>Reference:</b> "{qObj.expected_answer}"
                   </div>
 
-                  <div style={{fontSize: '0.8rem', color: '#67e8f9'}}>
-                    <b>AI Feedback:</b> {resp.feedback} (Semantic Similarity: {Math.round((resp.semantic_similarity || 0) * 100)}%)
+                  <div style={{fontSize: '0.78rem', color: '#67e8f9'}}>
+                    <b>Feedback:</b> {resp.feedback} (Match: {Math.round((resp.semantic_similarity || 0) * 100)}%)
                   </div>
                 </div>
               );
@@ -1222,24 +1187,21 @@
 
       if (loading) {
         return (
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '240px', flexDirection: 'column', gap: '12px'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px', flexDirection: 'column', gap: '12px'}}>
             <div className="spinner-std"></div>
-            <div style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>Loading Archive...</div>
+            <div style={{color: 'var(--text-muted)', fontSize: '0.85rem'}}>Loading History...</div>
           </div>
         );
       }
 
       return (
-        <div className="animate-fade-in" style={{maxWidth: '960px', margin: '0 auto'}}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap', gap: '10px'}}>
-            <div>
-              <h1 style={{fontSize: '1.65rem', fontWeight: '800'}}>Assessment History</h1>
-              <p style={{color: 'var(--text-secondary)', fontSize: '0.85rem'}}>Archive of past candidate interview sessions</p>
-            </div>
+        <div className="animate-fade-in" style={{maxWidth: '920px', margin: '0 auto'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '8px'}}>
+            <h1 style={{fontSize: '1.5rem', fontWeight: '900'}}>Assessment History</h1>
             <button className="btn btn-primary" onClick={() => navigate('setup')}><IconBriefcase /> Start New Assessment</button>
           </div>
 
-          <div className="card">
+          <div className="card" style={{padding: '16px'}}>
             {history.length > 0 ? (
               <div className="data-table-container">
                 <table className="data-table">
@@ -1248,9 +1210,9 @@
                       <th>ID</th>
                       <th>Date</th>
                       <th>Domain</th>
-                      <th>Difficulty</th>
+                      <th>Level</th>
                       <th>Mode</th>
-                      <th>Questions</th>
+                      <th>Qs</th>
                       <th>Score</th>
                       <th>Action</th>
                     </tr>
@@ -1278,7 +1240,7 @@
                 </table>
               </div>
             ) : (
-              <div style={{textAlign: 'center', padding: '24px', color: 'var(--text-muted)', fontSize: '0.85rem'}}>
+              <div style={{textAlign: 'center', padding: '20px', color: 'var(--text-muted)', fontSize: '0.8rem'}}>
                 No past interview records found.
               </div>
             )}
